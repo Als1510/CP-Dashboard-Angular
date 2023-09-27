@@ -1,40 +1,40 @@
-ion-list{
+ion-list {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   padding: 1rem 0;
 }
 
-ion-label{
+ion-label {
   width: 33%;
   text-overflow: ellipsis;
   text-align: center;
   align-self: center;
 }
 
-a{
+a {
   text-decoration: none;
 }
 
-.container{
+.container {
   height: auto;
   width: 100%;
   display: flex;
   flex-direction: column;
-  
-  .wrapper1{
+
+  .wrapper1 {
     height: 100%;
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../../../../assets/home.jpg') center/cover no-repeat;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../../../../assets/home.jpg') center/cover no-repeat;
     display: flex;
     flex-direction: column;
-    
-    .navbar{
+
+    .navbar {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       margin: 0.5rem 1.5rem;
 
-      ion-icon{
+      ion-icon {
         position: absolute;
         color: #fff;
         font-size: 35px;
@@ -42,22 +42,22 @@ a{
         left: 15px;
         opacity: 0;
       }
-    
-      img{
+
+      img {
         height: 90px;
         width: fit-content;
         margin: 0.3rem 0 0 1rem;
       }
 
-      ul{
+      ul {
         display: flex;
         flex-direction: row;
-        
-        li{
+
+        li {
           padding: 0.5rem;
           list-style: none;
 
-          a{
+          a {
             text-decoration: none;
             color: #fff;
             font-size: 1.2rem;
@@ -67,7 +67,7 @@ a{
     }
   }
 
-  .main-area{
+  .main-area {
     justify-self: center;
     align-self: center;
     display: flex;
@@ -76,40 +76,42 @@ a{
     justify-content: center;
     margin-top: 3.5rem;
     width: 90vw;
-    
-    h1{
+
+    h1 {
       font-size: 4rem;
       margin-bottom: 2.5rem;
       color: #fff;
       text-align: center;
     }
 
-    p{
+    p {
       color: #fff;
     }
 
-    .description{
+    .description {
       font-size: 1.2rem;
       margin: 2rem 0;
       text-align: center;
     }
-    
-    .quote-area{
+
+    .quote-area {
       margin-bottom: 2rem;
       display: flex;
-      flex-direction: column;     
-      .quote{
+      flex-direction: column;
+
+      .quote {
         font-style: italic;
         font-weight: bold;
         font-size: 0.8rem;
       }
-      .author{
+
+      .author {
         align-self: flex-end;
         font-size: 0.8rem;
       }
     }
 
-    ion-button{
+    ion-button {
       text-transform: none;
       --border-radius: 12px;
       --background: #000;
@@ -117,23 +119,27 @@ a{
     }
   }
 
-  .wrapper2{
+  .wrapper2 {
     padding: 1rem 0.5rem;
-    .contest{
+
+    .contest {
       margin: 1rem 0.5rem 0.8rem 0.5rem;
-      .contest_heading{
+
+      .contest_heading {
         background-color: #000;
         color: #fff;
         border-radius: 15px;
       }
-      .more{
+
+      .more {
         color: blue;
         display: flex;
         justify-content: end;
         padding-right: 0.5rem;
       }
     }
-    .no_data{
+
+    .no_data {
       font-size: 1.5rem;
       padding: 1rem 0;
       display: flex;
@@ -141,41 +147,53 @@ a{
     }
   }
 
-  .wrapper3{
+  .wrapper3 {
     padding: 1rem 0.5rem;
-    ion-card{
-      padding:1rem !important;
-      .faq_heading{
+
+    ion-card {
+      padding: 1rem !important;
+
+      .faq_heading {
         font-size: 1.5rem;
         font-weight: 600;
       }
 
-      .faq_list{
+      .faq_list {
+        display: grid;
+        grid-column-gap: 1rem;
+        grid-template-columns: repeat(3, 1fr);
         margin: 1rem 0 0 1rem !important;
-        .faq_question{
+
+        .faq_question {
           position: relative;
           padding: 0.3rem 0;
-          .question{
+
+          .question {
             color: #000;
             font-size: 1rem;
-            margin:0 2rem 0.4rem 0;
-            font-weight: normal;
+            margin: 0 2rem 0.4rem 0;
           }
-          .faq_icon{
+
+          .faq_icon {
             position: absolute;
-            top:5px;
-            right:5px;
+            top: 3px;
+            right: 5px;
             font-size: 1.2rem;
             cursor: pointer;
+            background-color: #f4f4f4;
+            border-radius: 50%;
+            padding: 0.3rem;
           }
-          .answer{
+
+          .answer {
             transition: 0.3s ease-in;
-            color: #000;
+            color: #4c4c4c;
             font-size: 1rem;
-            margin:0.5rem 2rem 0.4rem 0.4rem;
+            margin: 0.5rem 2rem 0.4rem 0.4rem;
             display: none;
           }
-          .rotate{
+
+          .rotate {
             transition: 0.3s ease-in;
             transform: rotate(90deg);
           }
@@ -189,26 +207,36 @@ a{
   .container {
     .wrapper1 {
 
-      .navbar{
-        img{
+      .navbar {
+        img {
           height: 80px;
           width: fit-content;
           margin: 0.3rem 0 0 1rem;
         }
       }
-      .main-area{
-        h1{
+
+      .main-area {
+        h1 {
           font-size: 3rem;
           margin-bottom: 2rem;
         }
-        .description{
+
+        .description {
           font-size: 1rem;
           margin: 2rem 0;
         }
-        
-        ion-button{
+
+        ion-button {
           font-size: 1.1rem;
           --border-radius: 12px;
+        }
+      }
+    }
+
+    .wrapper3 {
+      ion-card {
+        .faq_list {
+          grid-template-columns: repeat(2, 1fr);
         }
       }
     }
@@ -217,57 +245,68 @@ a{
 
 @media(max-width:480px) {
   .container {
-    .wrapper1{
-      .navbar{
+    .wrapper1 {
+      .navbar {
         flex-direction: column;
         margin: 0.5rem 0 1rem 4rem;
-  
-        ion-icon{
+
+        ion-icon {
           opacity: 1;
         }
 
-        img{
+        img {
           height: 60px;
           margin: 0.3rem 0 0 0;
         }
-  
-        ul{
+
+        ul {
           opacity: 0;
           flex-direction: column;
           padding: 0;
           margin: 0;
-          
-          li{
+
+          li {
             padding: 0.5rem 0;
 
-            a{
+            a {
               margin-left: 1rem;
               font-size: 1rem;
             }
           }
         }
-        
-        .active{
+
+        .active {
           opacity: 1;
         }
       }
     }
-    .main-area{
+
+    .main-area {
       margin-top: 0rem;
-      h1{
+
+      h1 {
         font-size: 2.5rem;
         margin-top: 0;
         margin-bottom: 2rem;
       }
-      .description{
+
+      .description {
         font-size: 1rem;
         margin: 2rem 0;
       }
-      
-      ion-button{
+
+      ion-button {
         text-transform: none;
         font-size: 1.1rem;
         --border-radius: 12px;
+      }
+    }
+
+    .wrapper3 {
+      ion-card {
+        .faq_list {
+          grid-template-columns: repeat(1, 1fr);
+        }
       }
     }
   }
