@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { EnvService } from './env.service';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { EnvService } from './env.service';
 export class AuthService {
 
   httpOptions = {
-    headers: new HttpHeaders({'Content-Type':'application/json'})
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
   constructor(
@@ -17,18 +17,26 @@ export class AuthService {
   ) { }
 
   register(name, username, email, password) {
-    return this._http.post(this._env.Mongo_API_URL+'/user', {name, username, email, password}, this.httpOptions)
+    return this._http.post(this._env.Mongo_API_URL + '/user', { name, username, email, password }, this.httpOptions)
+  }
+
+  googleAuth() {
+    return window.location.href = this._env.Mongo_API_URL + '/social/google';
+  }
+
+  githubAuth() {
+    return window.location.href = this._env.Mongo_API_URL + '/social/github';
   }
 
   login(email, password) {
-    return this._http.post(this._env.Mongo_API_URL+'/auth', {email, password}, this.httpOptions)
+    return this._http.post(this._env.Mongo_API_URL + '/auth', { email, password }, this.httpOptions)
   }
 
   requestOtp(email) {
-    return this._http.post(this._env.Mongo_API_URL+'/validation', {email}, this.httpOptions)
+    return this._http.post(this._env.Mongo_API_URL + '/validation', { email }, this.httpOptions)
   }
 
   resetPassword(email, otpCode, password) {
-    return this._http.post(this._env.Mongo_API_URL+'/validation/resetpassword', {email, otpCode, password}, this.httpOptions)
+    return this._http.post(this._env.Mongo_API_URL + '/validation/resetpassword', { email, otpCode, password }, this.httpOptions)
   }
 }

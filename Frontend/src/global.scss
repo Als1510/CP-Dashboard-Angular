@@ -24,21 +24,22 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
-*{
+
+* {
   user-select: none;
   // --background: #fff;
 }
 
-:root{
-  // --primary-color: #1A374D;
-  --secondary-color: #406882;
-  --tertiary-color: #6998AB;
-  --body-color: #fff;
-  --background-color: #fff;
-  --primary-color: #000;
+:root {
+  --primary-background: #ffffff;
 }
 
-ion-card, ion-card-content{
+.dark {
+  --primary-background: #222222;
+}
+
+ion-card,
+ion-card-content {
   padding: 0rem !important;
   margin: 0rem !important;
 }

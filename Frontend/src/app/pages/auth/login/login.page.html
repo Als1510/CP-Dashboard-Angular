@@ -3,10 +3,20 @@
     <ion-buttons slot="start" class="back_button">
       <ion-back-button defaultHref="/"></ion-back-button>
     </ion-buttons>
+    <!-- <ion-buttons slot="end" class="theme-toggle">
+      <app-theme-toggle></app-theme-toggle>
+    </ion-buttons> -->
     <div class="wrapper">
       <h1>Sign In</h1>
-      <span class="switch_page">Don't have an account? <a routerLink="/register" class="switch_page_link">Sign Up</a></span>
-        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <span class="switch_page">Don't have an account? <a routerLink="/register" class="switch_page_link">Sign
+          Up</a></span>
+      <app-social></app-social>
+      <div class="seperator">
+        <span class="line"></span>
+        <span class="or">OR</span>
+        <span class="line"></span>
+      </div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <ion-item lines="none">
           <ion-label position="floating">Email</ion-label>
           <ion-input type="email" name="email" formControlName="email"></ion-input>
@@ -20,7 +30,8 @@
         <a routerLink="/forgetpassword" class="forget_password">Forget Password?</a>
         <ion-button type="submit" class="submit">Sign In</ion-button>
       </form>
-      <span class="bottom-description">By signing in, you agree to our Terms of Use and to receive CP Dashboard emails & updates</span>
+      <span class="bottom-description">By signing in, you agree to our Terms of Use and to receive CP Dashboard emails &
+        updates</span>
     </div>
   </div>
 </ion-content>

@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const auth = require('../../middleware/auth')
-const {check, validationResult} = require('express-validator')
+const { check, validationResult } = require('express-validator')
 
 const User = require('../../models/User')
 const Platform = require('../../models/Platform')
@@ -13,8 +13,8 @@ router.get('/details', auth, async (req, res) => {
   try {
     let platformData = await Platform.findOne({ user: req.user.id })
 
-    if(platformData) {
-      return res.json({platformData})
+    if (platformData) {
+      return res.json({ platformData })
     }
 
     platformData = new Platform({
@@ -30,7 +30,7 @@ router.get('/details', auth, async (req, res) => {
 
     await platformData.save()
 
-    res.json({platformData})
+    res.json({ platformData })
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Server Error')
@@ -42,31 +42,31 @@ router.put('/updateplatform', [auth, [
   check('username', 'Please enter a valid username').not().isEmpty()
 ]], async (req, res) => {
   const errors = validationResult(req);
-  if(!errors.isEmpty()) {
+  if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { platformName , username } = req.body;
+  const { platformName, username } = req.body;
 
   try {
-    let platformData = await Platform.findOne({ user: req.user.id})
-    if(platformName === "codechef") platformData.platform.codechef = username
-    if(platformName === "codeforces") platformData.platform.codeforces = username
-    if(platformName === "spoj") platformData.platform.spoj = username
-    if(platformName === "leetcode") platformData.platform.leetcode = username
-    if(platformName === "atcoder") platformData.platform.atcoder = username
+    let platformData = await Platform.findOne({ user: req.user.id })
+    if (platformName === "codechef") platformData.platform.codechef = username
+    if (platformName === "codeforces") platformData.platform.codeforces = username
+    if (platformName === "spoj") platformData.platform.spoj = username
+    if (platformName === "leetcode") platformData.platform.leetcode = username
+    if (platformName === "atcoder") platformData.platform.atcoder = username
 
     await Platform.findOneAndUpdate(
       { user: req.user.id },
-      { $set: platformData }, 
+      { $set: platformData },
       { new: true }
     );
 
-    return res.json({platformData, msg:"Data updated successfully"})
+    return res.json({ platformData, msg: "Data updated successfully" })
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server Error");
   }
-}) 
+})
 
 module.exports = router;

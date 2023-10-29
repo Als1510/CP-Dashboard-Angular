@@ -23,7 +23,7 @@ router.post('/', [
   const { email, password } = req.body;
 
   try {
-    let user = await User.findOne({ email })
+    let user = await User.findOne({ email, provider: 'local' })
 
     if (!user) {
       return res.status(400).json({ errors: [{ msg: 'Please register your account' }] })
@@ -47,9 +47,9 @@ router.post('/', [
     }
 
     const payload = {
-      user: {
-        id: user.id
-      }
+      id: user.id,
+      name: user.name,
+      username: user.username
     }
 
     jwt.sign(
@@ -57,8 +57,8 @@ router.post('/', [
       process.env.jwtSecret,
       { expiresIn: 360000 },
       (error, token) => {
-        if(error) throw error
-        res.json({ token, name: user.name, id: user.id, username: user.username })
+        if (error) throw error
+        res.json({ token })
       }
     )
 

@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+import { AlertService } from 'src/app/services/alert.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoaderService } from 'src/app/services/loader.service';
 
@@ -17,12 +18,18 @@ export class RegisterPage implements OnInit {
   constructor(
     private _formBuilder: FormBuilder,
     private _router: Router,
+    private _activatedRoute: ActivatedRoute,
     private _alertController: AlertController,
     private _authService: AuthService,
-    private _loaderService: LoaderService
+    private _loaderService: LoaderService,
+    private _alertService: AlertService
   ) { }
 
   ngOnInit() {
+    const message = this._activatedRoute.snapshot.queryParamMap.get('message');
+    if (message) {
+      this._alertService.presentToast(message, 'danger')
+    }
     this.registerForm = this._formBuilder.group({
       name: ["", Validators.required],
       username: ["", Validators.required],
@@ -31,7 +38,7 @@ export class RegisterPage implements OnInit {
     })
   }
 
-  eye(){
+  eye() {
     this.hide = !this.hide
   }
 

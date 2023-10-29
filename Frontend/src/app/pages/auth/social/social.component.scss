@@ -1,0 +1,13 @@
+.social-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    margin: 0 1rem;
+    height: 40px;
+    width: 40px;
+    cursor: pointer;
+  }
+}

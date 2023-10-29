@@ -46,14 +46,14 @@ router.post('/', [
   try {
     let user = await User.findOne({ email });
 
-    if(user) {
-      return res.status(400).json({ errors: [{ msg: 'User already exists '}] })
+    if (user) {
+      return res.status(400).json({ errors: [{ msg: 'User already exists ' }] })
     }
 
     let existedusername = await User.findOne({ username })
 
-    if(existedusername) {
-      return res.status(400).json({ errors: [{ msg: 'Username is already taken'}] })
+    if (existedusername) {
+      return res.status(400).json({ errors: [{ msg: 'Username is already taken' }] })
     }
 
     user = new User({
@@ -62,7 +62,8 @@ router.post('/', [
       email,
       password,
       uniqueString,
-      active
+      active,
+      provider: 'local'
     })
 
     const salt = await bcrypt.genSalt(10)
@@ -73,7 +74,7 @@ router.post('/', [
     var sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
 
     sendSmtpEmail = {
-      sender: { name:"CP-Dashboard", email: process.env.emailId },
+      sender: { name: "CP-Dashboard", email: process.env.emailId },
       to: [
         {
           email,
@@ -86,7 +87,7 @@ router.post('/', [
     apiInstance.sendTransacEmail(sendSmtpEmail).then(
       function (data) {
         user.save();
-        res.json({msg: "Verification link has been sent to your email account. Please activate your account", name})
+        res.json({ msg: "Verification link has been sent to your email account. Please activate your account", name })
       },
       function (error) {
         return res.status(400).json({ errors: [{ msg: 'Entered email address is not valid' }] })
@@ -114,7 +115,7 @@ router.post('/', [
 
     // res.json({msg: "Verification link has been sent to your email account. Please activate your account", name})
 
-  } catch(error) {
+  } catch (error) {
     console.error(error.message)
     res.status(500).send('Server Error!')
   }

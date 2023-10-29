@@ -2,10 +2,10 @@ import { HttpErrorResponse, HttpEvent, HttpHandler, HttpRequest } from '@angular
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { EMPTY, Observable } from 'rxjs';
-import { AlertService } from './alert.service';
 import { catchError } from 'rxjs/operators';
-import { TokenService } from './token.service';
+import { AlertService } from './alert.service';
 import { LoaderService } from './loader.service';
+import { TokenService } from './token.service';
 
 const TOKEN_HEADER_KEY = 'x-token';
 
@@ -27,7 +27,7 @@ export class HttpinterceptorService {
     this.token = this._tokenService.getToken();
   }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>>{
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.getToken();
     this._loaderService.isLoading.next(true);
 
@@ -38,11 +38,11 @@ export class HttpinterceptorService {
     return next.handle(req).pipe(
       catchError((error) => {
         this._loaderService.isLoading.next(false);
-        if(error instanceof HttpErrorResponse) {
-          if(Array.isArray(error.error.errors)) {
+        if (error instanceof HttpErrorResponse) {
+          if (Array.isArray(error.error.errors)) {
             this._alertService.presentToast(error.error.errors[0].msg, 'danger')
           } else {
-            switch(error.status) {
+            switch (error.status) {
               case 401:
                 this._router.navigate(['login']);
                 break;

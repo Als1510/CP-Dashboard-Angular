@@ -16,7 +16,15 @@ const UserSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true
+    validate: {
+      validator: function (value) {
+        if (this.provider === 'local') {
+          return !!value;
+        }
+        return true;
+      },
+      message: 'Password is required'
+    }
   },
   uniqueString: {
     type: String
@@ -32,6 +40,9 @@ const UserSchema = new mongoose.Schema({
   date: {
     type: Date,
     default: Date.now
+  },
+  provider: {
+    type: String,
   }
 })
 

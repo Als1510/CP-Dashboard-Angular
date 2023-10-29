@@ -1,0 +1,38 @@
+ion-toggle {
+  width: 60px;
+  height: 20px;
+  --handle-max-height: auto;
+}
+
+ion-toggle::part(track),
+ion-toggle.toggle-checked::part(track) {
+  transition: all 0.3s;
+  width: 50px;
+  height: 24px;
+}
+
+ion-toggle::part(track) {
+  background: url("../../../../assets/Utils/sun.png") no-repeat left / contain;
+  background-color: rgba(255, 165, 0, 0.1);
+}
+
+ion-toggle.toggle-checked::part(track) {
+  background: url("../../../../assets/Utils/moon.png") no-repeat right / contain;
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
+ion-toggle::part(handle),
+ion-toggle.toggle-checked::part(handle) {
+  height: 25px;
+  width: 25px;
+}
+
+ion-toggle::part(handle) {
+  left: 0;
+  background: transparent;
+}
+
+ion-toggle.toggle-checked::part(handle) {
+  left: -3px;
+  background: transparent;
+}

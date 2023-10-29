@@ -1,55 +1,70 @@
-.container{
+.container {
   position: absolute;
-  top:0;
-  left:0;
+  top: 0;
+  left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
   width: 100%;
 
-  .back_button{
+  .back_button {
     position: fixed;
     top: 15px;
     left: 15px;
     --background: #fff !important;
   }
 
-  .wrapper{
+  .wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 0 2rem;
 
-    h1{
+    h1 {
       font-size: 2.5rem;
-      margin-bottom: 1rem;
     }
 
-    .switch_page{
+    .switch_page {
+      margin: 1rem 0 3rem;
       font-size: 0.9rem;
       text-align: center;
+
+      .switch_page_link {
+        cursor: pointer;
+        text-decoration: none;
+      }
     }
 
-    .switch_page_link{
-      cursor: pointer;
-      text-decoration: none;
+    .seperator {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      .line {
+        border: 1px solid grey;
+        min-width: 100px;
+        width: 10vw;
+      }
+
+      .or {
+        margin: 2rem 1rem;
+      }
     }
 
-    form{
+    form {
       width: 100%;
       display: flex;
       flex-direction: column;
-      margin: 2rem 0;
-      
-      ion-item{
+
+      ion-item {
         border-bottom: 0.1px solid #333;
         margin: 0.5rem 0;
 
-        .eye_icon{
+        .eye_icon {
           position: absolute;
-          right:10px;
+          right: 10px;
           top: 25px;
           align-self: flex-end;
           cursor: pointer;
@@ -57,7 +72,7 @@
         }
       }
 
-      ion-button{
+      ion-button {
         height: 45px;
         width: 150px;
         --border-radius: 15px !important;
@@ -67,14 +82,16 @@
         color: #fff;
       }
 
-      .submit{
+      .submit {
         align-self: center;
-        margin-top: 1.5rem;
+        margin-top: 1rem;
         --background: black;
         color: #fff;
       }
     }
-    .bottom-description{
+
+    .bottom-description {
+      margin-top: 1rem;
       text-align: center;
       font-size: 0.7rem;
     }

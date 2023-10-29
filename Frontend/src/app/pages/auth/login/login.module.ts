@@ -1,11 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule , ReactiveFormsModule} from '@angular/forms';
+import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
 import { LoginPageRoutingModule } from './login-routing.module';
 
+import { ThemeToggleComponent } from '../../utils/theme-toggle/theme-toggle.component';
+import { SocialComponent } from '../social/social.component';
 import { LoginPage } from './login.page';
 
 @NgModule({
@@ -16,7 +18,7 @@ import { LoginPage } from './login.page';
     ReactiveFormsModule,
     LoginPageRoutingModule,
   ],
-  declarations: [LoginPage],
+  declarations: [LoginPage, ThemeToggleComponent, SocialComponent],
   providers: []
 })
-export class LoginPageModule {}
+export class LoginPageModule { }
