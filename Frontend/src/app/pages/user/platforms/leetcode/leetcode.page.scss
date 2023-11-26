@@ -1,179 +1,203 @@
-ion-card{
+ion-card {
   padding: 0 !important;
   margin: 0 !important;
 }
-ion-content{
+
+ion-content {
   box-sizing: border-box;
   position: absolute;
-  top:0;
-  left: 75px;
-  margin: 0;
-  padding: 0;
-  width: calc(100% - 75px);
+  top: 0;
+  left: 70px;
+  width: calc(100% - 70px);
   height: 100%;
-  
-  .header{
+
+  .header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin:1rem 0 0 1.3rem;
+    margin: 1rem 0 0 1.3rem;
 
-    img{
+    img {
       height: 50px;
+      padding: 0.5rem;
+      background-color: white;
+      border-radius: 10%;
     }
-    h1{
+
+    h1 {
       margin: 0 0 0 1rem;
       font-size: 2rem;
+      color: var(--text-color-1);
     }
   }
-  .container{
-    width: calc(100% - 5px);
+
+  .container {
+    width: 100%;
     display: grid;
-    margin: 1rem 0;
     grid-template-columns: 1fr;
     justify-content: center;
     align-items: center;
     grid-gap: 1rem;
+    margin: 1rem 0 0.5rem 0;
 
-    .box{
-      display: grid;
-      height: 100%;
+    .box {
       width: 100%;
-      grid-template-columns:75% 24%;
-      grid-gap: 1rem;
+      display: grid;
+      grid-gap: 0.5rem;
+      grid-template-columns: 74% 24%;
       justify-content: space-evenly;
-      .wrapper1{ 
+
+      .wrapper1 {
         order: 1;
         display: grid;
         grid-template-columns: 1fr;
         row-gap: 1rem;
-        .profile{
-          display: flex; 
+
+        .profile {
+          display: flex;
           flex-direction: row;
           align-items: center;
           padding: 1rem !important;
-          img{
+
+          img {
             height: 70px;
             border-radius: 12px;
           }
-          .user{
+
+          .user {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             margin-left: 2rem;
 
-            p{
+            p {
               margin: 0;
             }
 
-            .username{
+            .username {
               margin-bottom: 1rem;
+              color: var(--text-color-2);
             }
 
-            .rank{
+            .rank {
               font-size: 1rem;
               align-self: flex-end;
               justify-self: flex-end;
-              .no{
+              color: var(--text-color-2);
+
+              .no {
                 margin-left: 0.2rem;
-                color: #000;
+                color: var(--text-color-1);
               }
             }
           }
         }
 
-        .problems{
+        .problems {
           display: grid;
           grid-template-columns: 1fr;
           grid-gap: 1rem;
 
-          ion-card{
+          ion-card {
             padding: 1rem !important;
-            p{
+
+            p {
               margin: 0;
             }
 
-            h2{
+            h2 {
               margin-bottom: 1rem !important;
+              color: var(--text-color-1);
             }
 
-            .score{
+            .score {
               margin: 1.5rem 0 0.2rem 0 !important;
               display: flex;
               flex-direction: row;
               justify-content: space-between;
 
-              .no{
-                color: #000;
+              p {
+                color: var(--text-color-2);
+              }
+
+              .no {
+                color: var(--text-color-1);
                 font-size: 1rem;
               }
             }
 
           }
 
-          .easy{
-            ion-progress-bar{
+          .easy {
+            ion-progress-bar {
               --buffer-background: #E0F4E7;
               --progress-background: #00AF9B;
             }
           }
-          .medium{
-            ion-progress-bar{
+
+          .medium {
+            ion-progress-bar {
               --buffer-background: #FFF4D9;
               --progress-background: #FFB904;
             }
           }
-          .hard{
-            ion-progress-bar{
+
+          .hard {
+            ion-progress-bar {
               --buffer-background: #FDE4E3;
               --progress-background: #F9BBBA;
             }
           }
         }
       }
-      .wrapper2{
+
+      .wrapper2 {
         padding: 1rem 0.5rem !important;
         width: 100%;
         height: 100%;
         display: flex;
         align-items: center;
         justify-content: center;
-        h1{
+
+        h1 {
           position: absolute;
-          top:10px;
+          top: 10px;
           left: 15px;
           margin: 0;
+          color: var(--text-color-1);
         }
-        .canvas{
+
+        .canvas {
           margin-top: 1rem;
-          width:100%;
-          canvas{
+          width: 100%;
+
+          canvas {
             height: auto;
           }
         }
       }
     }
 
-    .submission{
+    .submission {
       width: 100%;
       padding: 0.5rem 0.2rem !important;
 
-      h1{
+      h1 {
         margin: 1rem;
       }
 
-      ion-list{
+      ion-list {
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
         padding: 0.5rem 0;
 
-        .submission_header{
+        .submission_header {
           font-size: 1rem;
           color: #000;
         }
-        
-        ion-label{
+
+        ion-label {
           padding: 0.2rem 0;
           width: 33%;
           text-overflow: ellipsis;
@@ -183,33 +207,38 @@ ion-content{
       }
     }
   }
-  .noData{
-    padding: 2rem 0 !important;
-    width: 100%;
-    p{
+
+  .noData {
+    margin: 2rem 0.4rem !important;
+
+    p {
       font-size: 2rem;
       text-align: center;
+      color: var(--text-color-2);
     }
   }
 }
 
 @media(max-width: 1000px) {
-  ion-content{
-    .container{  
-      .box{
-        grid-template-columns:100%;
-        .wrapper1{ 
+  ion-content {
+    .container {
+      .box {
+        grid-template-columns: 99%;
+
+        .wrapper1 {
           order: 0;
-          .profile{
+
+          .profile {
             width: 400px;
           }
-          .problems{
-            grid-template-columns: repeat(auto-fit,minmax(230px, 1fr));
+
+          .problems {
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
           }
         }
-        
-        .wrapper2{
-          .canvas{
+
+        .wrapper2 {
+          .canvas {
             margin-top: 2rem;
           }
         }
@@ -219,17 +248,20 @@ ion-content{
 }
 
 @media(max-width: 480px) {
-  ion-content{
-    .container{  
-      .box{
-        grid-template-columns:100%;
-        .wrapper1{ 
+  ion-content {
+    .container {
+      .box {
+        // grid-template-columns: 100%;
+
+        .wrapper1 {
           order: 0;
-          .profile{
+
+          .profile {
             width: 100%;
           }
-          .problems{
-            grid-template-columns: repeat(auto-fit,minmax(230px, 1fr));
+
+          .problems {
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
           }
         }
       }

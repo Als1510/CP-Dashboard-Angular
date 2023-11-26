@@ -1,152 +1,187 @@
-ion-card{
+ion-card {
   padding: 0 !important;
   margin: 0 !important;
 }
-ion-content{
+
+ion-content {
   box-sizing: border-box;
   position: absolute;
-  top:0;
-  left: 75px;
-  width: calc(100% - 75px);
+  top: 0;
+  left: 70px;
+  width: calc(100% - 70px);
   height: 100%;
-  
-  .header{
+
+  .header {
     display: flex;
     flex-direction: row;
     align-items: center;
     margin: 1rem 0 0 1.3rem;
-    
-    img{
+
+    img {
       height: 50px;
+      padding: 0.5rem;
+      background-color: white;
+      border-radius: 10%;
     }
-    h1{
+
+    h1 {
       margin: 0 0 0 1rem;
       font-size: 2rem;
     }
   }
-  
-  .container{
-    width: calc(100% - 5px);
+
+  .container {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin: 1rem 0;
-    
-    .box{
+    margin: 1rem 0 0.5rem 0;
+    padding: 0 0.4rem;
+
+    .box {
       width: 100%;
       display: grid;
-      grid-gap: 1rem;
+      grid-gap: 0.5rem;
       grid-template-columns: 75% 24%;
-      justify-content: space-evenly;
+      justify-content: space-between;
 
-      .wrapper1{
+      .wrapper1 {
         order: 1;
         padding: 1rem 0.5rem !important;
         display: grid;
         grid-template-columns: 1fr;
         justify-content: center;
         align-items: center;
-        .user-image{
+
+        .user-image {
           justify-self: center;
-          width: fit-content;
-          img{
-            height: 180px;
+          width: 100%;
+          height: auto;
+
+          img {
+            height: auto;
             border-radius: 12px;
+            width: 100%;
           }
         }
-  
-        .user-details{
+
+        .user-details {
           align-items: flex-start;
           margin-left: 0.5rem;
-          p{
+
+          p {
             font-size: 1rem;
             margin: 0.5rem 0;
             padding: 0;
-            .p-main{
-              color: #000;
+
+            .p-main {
+              color: var(--text-color-1);
               font-weight: 200;
             }
           }
-          
-          #rank{
+
+          #rank {
             font-size: 1rem;
             font-weight: bold;
+            color: var(--text-color-2);
           }
-          
-          #username{
+
+          #username {
             font-size: 1.5rem;
             font-weight: bold;
+            color: var(--text-color-2);
           }
-          
-          .contest-rating, .contribution, .friends{
+
+          .contest-rating,
+          .contribution,
+          .friends {
             display: flex;
             flex-direction: row;
             align-items: center;
           }
-          
-          #name{
+
+          #name {
             margin-right: 0.4rem;
           }
-          
-          #max-rating{
+
+          #max-rating {
             margin-left: 0.3rem;
           }
 
-          .name-city, .contest-rating-max-rating{
+          .name-city,
+          .contest-rating-max-rating {
             display: flex;
             flex-direction: column;
             align-items: flex-start;
           }
-          
-          .name-city, .contest-rating, .contribution, .friends{
+
+          .name-city,
+          .contest-rating,
+          .contribution,
+          .friends {
             margin: 0.5rem 0;
-            img{
+            color: var(--text-color-2);
+
+            img {
               height: 25px;
               margin-right: 0.5rem;
             }
           }
-  
-          #max-rating{
+
+          #max-rating {
             font-size: 0.9rem;
+            color: var(--text-color-2);
           }
         }
       }
 
-      .wrapper2{
+      .wrapper2 {
         padding: 1rem 0.5rem !important;
         height: 100%;
         width: 100%;
         display: grid;
-        h1{
+
+        h1 {
           position: relative;
           top: 5px;
           left: 15px;
+          color: var(--text-color-1);
         }
-        canvas{
+
+        canvas {
           align-self: center;
           margin: 2rem 1rem;
         }
       }
     }
 
-    .wrapper3{
+    .wrapper3 {
       margin: 1rem 0.2rem 0.2rem 0.1rem !important;
       width: 100%;
-      .contest_heading_header{
-        .contest_heading_label{
+
+      .contest_heading_header {
+        .contest_heading_label {
           font-size: 1rem;
-          color: #000;
+          font-weight: 500;
+          color: var(--text-color-1);
         }
       }
-      ion-list{
+
+      .contest_data {
+        ion-label {
+          color: var(--text-color-2);
+        }
+      }
+
+      ion-list {
         display: grid;
         grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
         justify-content: space-evenly;
         padding: 1rem 0;
         margin-left: 0.2rem;
-        
-        ion-label{
+
+        ion-label {
           width: 100%;
           text-overflow: ellipsis;
           text-align: center;
@@ -156,28 +191,30 @@ ion-content{
     }
   }
 
-  .noData{
-    padding: 2rem 0 !important;
-    width: 100%;
-    p{
+  .noData {
+    margin: 2rem 0.4rem !important;
+
+    p {
       font-size: 2rem;
       text-align: center;
+      color: var(--text-color-2);
     }
   }
 }
 
 @media(max-width: 1000px) {
-  ion-content{ 
-    .container{
+  ion-content {
+    .container {
       width: calc(100% - 5px);
-      .box{
+
+      .box {
         width: 100%;
         display: grid;
         grid-gap: 1rem;
         grid-template-columns: 1fr;
         justify-content: center;
-  
-        .wrapper1{
+
+        .wrapper1 {
           order: 0;
           padding: 1rem 0.5rem !important;
           display: grid;
@@ -185,82 +222,90 @@ ion-content{
           grid-gap: 1rem;
           justify-content: space-evenly;
           align-items: center;
-          .user-image{
+
+          .user-image {
             justify-self: center;
             width: fit-content;
-            img{
+
+            img {
               height: 180px;
               border-radius: 12px;
             }
           }
-    
-          .user-details{
+
+          .user-details {
             align-items: center;
             margin-left: 1rem;
-            p{
+
+            p {
               font-size: 1rem;
               margin: 0.5rem 0;
               padding: 0;
-              .p-main{
-                color: #000;
-                font-weight: 200;
-              }
             }
-            
-            #rank{
+
+            #rank {
               font-size: 1rem;
               font-weight: bold;
             }
-            
-            #username{
+
+            #username {
               font-size: 1.5rem;
               font-weight: bold;
             }
-            
-            .contest-rating, .contribution, .friends{
+
+            .contest-rating,
+            .contribution,
+            .friends {
               flex-direction: row;
               align-items: center;
             }
-            
-            #name{
+
+            #name {
               margin-right: 0.4rem;
             }
-            
-            #max-rating{
+
+            #max-rating {
               margin-left: 0.3rem;
             }
-  
-            .name-city, .contest-rating-max-rating{
+
+            .name-city,
+            .contest-rating-max-rating {
               flex-direction: row;
               align-items: center;
             }
-            
-            .name-city, .contest-rating, .contribution, .friends{
+
+            .name-city,
+            .contest-rating,
+            .contribution,
+            .friends {
               margin: 0.5rem 0;
-              img{
+
+              img {
                 height: 25px;
                 margin-right: 0.5rem;
               }
             }
-    
-            #max-rating{
+
+            #max-rating {
               font-size: 0.9rem;
             }
           }
         }
-  
-        .wrapper2{
+
+        .wrapper2 {
           height: auto;
           width: 100%;
           padding: 0.5rem !important;
           margin-left: 1rem;
           display: grid;
-          h1{
+
+          h1 {
             position: relative;
             top: 5px;
             left: 15px;
           }
-          canvas{
+
+          canvas {
             align-self: center;
             margin: 2rem 1rem;
           }
@@ -271,93 +316,100 @@ ion-content{
 }
 
 @media(max-width: 480px) {
-  ion-content{    
-    .container{
-      .box{
-        .wrapper1{
+  ion-content {
+    .container {
+      .box {
+        .wrapper1 {
           padding: 1rem 0.5rem !important;
           grid-template-columns: 1fr;
-          
-          .user-details{
+
+          .user-details {
             justify-self: center;
-            p{
+
+            p {
               font-size: 1rem;
               margin: 0.5rem 0;
               padding: 0;
-              .p-main{
-                color: #000;
-                font-weight: 200;
-              }
             }
-            
-            #rank{
+
+            #rank {
               font-size: 1rem;
               font-weight: bold;
             }
-            
-            #username{
+
+            #username {
               font-size: 1.5rem;
               font-weight: bold;
             }
-            
-            .contest-rating, .contribution, .friends{
+
+            .contest-rating,
+            .contribution,
+            .friends {
               display: flex;
               flex-direction: row;
               align-items: center;
             }
-            
-            #name{
+
+            #name {
               margin-right: 0.4rem;
             }
-            
-            #max-rating{
+
+            #max-rating {
               margin-left: 0.3rem;
             }
-  
-            .name-city, .contest-rating-max-rating{
+
+            .name-city,
+            .contest-rating-max-rating {
               display: flex;
               flex-direction: column;
               align-items: flex-start;
             }
-            
-            .name-city, .contest-rating, .contribution, .friends{
+
+            .name-city,
+            .contest-rating,
+            .contribution,
+            .friends {
               margin: 0.5rem 0;
-              img{
+
+              img {
                 height: 25px;
                 margin-right: 0.5rem;
               }
             }
-    
-            #max-rating{
+
+            #max-rating {
               font-size: 0.9rem;
             }
           }
         }
-        .wrapper2{
+
+        .wrapper2 {
           height: auto;
           width: 100%;
           padding: 0.5rem !important;
           margin-left: 1rem;
           display: grid;
-          h1{
+
+          h1 {
             position: relative;
             top: 5px;
             left: 15px;
           }
-          canvas{
+
+          canvas {
             align-self: center;
             margin: 1rem 0.5rem;
           }
         }
       }
 
-      .wrapper3{
-        ion-list{
+      .wrapper3 {
+        ion-list {
           grid-template-columns: 1.7fr 1fr 1fr;
           padding: 0.7rem 0;
         }
 
-        .mobile{
+        .mobile {
           display: none;
         }
       }

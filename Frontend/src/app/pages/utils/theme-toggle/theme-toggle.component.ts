@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-theme-toggle',
@@ -7,8 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ThemeToggleComponent implements OnInit {
 
-  constructor() { }
+  currentTheme: string;
+  constructor(
+    private _themeService: ThemeService,
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this._themeService.theme.subscribe((value) => {
+      this.currentTheme = value;
+    })
+  }
+
+  changeTheme() {
+    setTimeout(() => {
+      this.currentTheme = (this.currentTheme === 'dark') ? '' : 'dark';
+      this._themeService.setTheme(this.currentTheme)
+    }, 10)
+  }
 
 }

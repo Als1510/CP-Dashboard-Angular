@@ -4,7 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { jwtDecode } from 'jwt-decode';
 import { AuthService } from 'src/app/services/auth.service';
 import { LoaderService } from 'src/app/services/loader.service';
-import { TokenService } from 'src/app/services/token.service';
+import { LocalStorageService } from 'src/app/services/localStorage.service';
+import { ThemeService } from 'src/app/services/theme.service';
 
 @Component({
   selector: 'app-login',
@@ -21,8 +22,9 @@ export class LoginPage implements OnInit {
     private _router: Router,
     private _activatedRoute: ActivatedRoute,
     private _authService: AuthService,
-    private _tokenService: TokenService,
-    private _loaderService: LoaderService
+    private _localStorageService: LocalStorageService,
+    private _loaderService: LoaderService,
+    private _themeService: ThemeService
   ) { }
 
   ngOnInit() {
@@ -54,8 +56,8 @@ export class LoginPage implements OnInit {
 
   setUserAndNavigate(data) {
     let decodedToken = jwtDecode(data);
-    this._tokenService.saveNameIdUserName(decodedToken['name'], decodedToken['id'], decodedToken['username'])
-    this._tokenService.setToken(data)
+    this._localStorageService.saveNameIdUserName(decodedToken['name'], decodedToken['id'], decodedToken['username'])
+    this._localStorageService.setToken(data)
     this._router.navigate(['/User/dashboard'])
   }
 }

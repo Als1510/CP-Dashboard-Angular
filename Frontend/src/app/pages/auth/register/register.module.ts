@@ -6,6 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { RegisterPageRoutingModule } from './register-routing.module';
 
+import { ThemeToggleComponent } from '../../utils/theme-toggle/theme-toggle.component';
 import { SocialComponent } from '../social/social.component';
 import { RegisterPage } from './register.page';
 
@@ -17,6 +18,6 @@ import { RegisterPage } from './register.page';
     ReactiveFormsModule,
     RegisterPageRoutingModule
   ],
-  declarations: [RegisterPage, SocialComponent]
+  declarations: [RegisterPage, ThemeToggleComponent, SocialComponent]
 })
 export class RegisterPageModule { }

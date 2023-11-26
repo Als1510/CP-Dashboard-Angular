@@ -1,4 +1,5 @@
 <div class="social-buttons">
   <img src="../../../../assets/icon/google.png" alt="" (click)="googleAuth()">
-  <img src="../../../../assets/icon/github.png" alt="" (click)="githubAuth()">
+  <img [src]="theme === 'dark' ? '../../../../assets/icon/github-dark.png' : '../../../../assets/icon/github.png'"
+    alt="" (click)="githubAuth()">
 </div>

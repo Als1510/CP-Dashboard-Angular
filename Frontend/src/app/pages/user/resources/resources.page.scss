@@ -1,70 +1,78 @@
-ion-content{
+ion-content {
   box-sizing: border-box;
   position: absolute;
-  top:0;
+  top: 0;
   left: 70px;
   width: calc(100% - 70px);
 
-  h1{
+  h1 {
     font-size: 2rem;
     margin-left: 1.3rem;
+    color: var(--text-color-1);
   }
-  
-  .container{
+
+  .container {
     display: flex;
     align-items: center;
     margin: 1rem 0.5rem;
     display: grid;
     grid-row-gap: 1.3rem;
     grid-column-gap: 0.5rem;
-    grid-template-columns: repeat(auto-fit,minmax(250px, 1fr));
-    ion-card{
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+
+    ion-card {
       margin: 0.5rem !important;
-      a{
+
+      a {
         text-decoration: none;
-        ion-card-content{
+
+        ion-card-content {
           display: grid;
           grid-column-gap: 0.5rem;
           padding: 1rem 0.5rem !important;
           display: flex;
-          justify-content: space-around;
-          
-          ion-label{
+          justify-content: space-between;
+
+          ion-label {
             font-size: 20px;
             margin-top: 1rem;
-            color: #000;
+            color: var(--text-color-1);
+            word-break: break-all;
           }
-          
-          img{
+
+          img {
             height: 80px;
             width: 80px;
             border-radius: 12px;
+            padding: 0.5rem;
+            background-color: var(--img-background);
           }
         }
       }
     }
 
-    ion-card:hover{
+    ion-card:hover {
       transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, .12), 0 4px 8px rgba(0, 0, 0, .06);
     }
   }
 }
 
 
 @media(max-width: 400px) {
-  ion-content{
-    .container{
+  ion-content {
+    .container {
       margin: 1rem 0.3rem;
       grid-gap: 0;
-      ion-card{
-        a{
-          ion-card-content{  
-            ion-label{
+
+      ion-card {
+        a {
+          ion-card-content {
+            ion-label {
               font-size: 20px;
             }
-            
-            img{
+
+            img {
               height: 60px;
               width: 60px;
             }

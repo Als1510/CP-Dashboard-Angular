@@ -3,7 +3,7 @@
     <h1>Dashboard</h1>
     <div class="profile" (click)="showUser()">
       <div class="profile_details">
-        <ion-icon name="person-circle-outline" id="user" ></ion-icon>
+        <ion-icon name="person-circle-outline" id="user"></ion-icon>
         <p class="username" id="username">{{username}}</p>
       </div>
       <p class="name" id="name">{{name}}</p>
@@ -14,18 +14,20 @@
       <ion-card-content>
         <p class="wrapper1_content">Registered Platforms</p>
       </ion-card-content>
-      <div role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" [style.--value]="value" [style.--registeredPlatform]="registeredPlatform"></div>
+      <div role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" [style.--value]="value"
+        [style.--registeredPlatform]="registeredPlatform"></div>
     </ion-card>
     <ion-card class="card2 card">
       <ion-slides [options]="slideOpts" pager="false">
         <ion-slide>
-          <img src="../../../../assets/Utils/img1.png" alt="">
+          <img
+            [src]="theme === 'dark' ? '../../../../assets/Utils/img1-dark.png' : '../../../../assets/Utils/img1-light.png'"
+            class="slide-image">
         </ion-slide>
         <ion-slide>
-          <img src="../../../../assets/Utils/img2.png" alt="">
-        </ion-slide>
-        <ion-slide>
-          <img src="../../../../assets/Utils/img3.png" alt="">
+          <img
+            [src]="theme === 'dark' ? '../../../../assets/Utils/img2-dark.png' : '../../../../assets/Utils/img2-light.png'"
+            class="slide-image">
         </ion-slide>
       </ion-slides>
     </ion-card>
@@ -49,7 +51,7 @@
           <h3>Leetcode</h3>
         </ion-slide>
         <ion-slide>
-          <img src="../../../../assets/Platforms/spoj.jpg" alt="">
+          <img src="../../../../assets/Platforms/spoj.png" alt="">
           <h3>SPOJ</h3>
         </ion-slide>
       </ion-slides>

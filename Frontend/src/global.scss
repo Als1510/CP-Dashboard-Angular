@@ -31,15 +31,114 @@
 }
 
 :root {
-  --primary-background: #ffffff;
+  --ion-background-color: #fff;
+  --text-color-1: #000;
+  --text-color-2: #4c4c4c;
+  --link-color: #3880ff;
+  --line-color: #808080;
+  --button-background: #3A3A3A;
+  --button-background-disabled: #1a1f23;
+  --button-text-color: #fff;
+  --icon-color: #4f4a4a;
+  --card-background: #fff;
+  --hover: rgb(245, 242, 242);
+  --img-background: #fff;
 }
 
 .dark {
-  --primary-background: #222222;
+  --ion-background-color: #010409;
+  --text-color-1: #fff;
+  --text-color-2: #d4d4d4;
+  --button-background: #fff;
+  --button-background-disabled: #f4f5f7;
+  --button-text-color: #000;
+  --icon-color: #d4cece;
+  --card-background: #0d1017;
+  --card-border: #161b1f;
+  --hover: rgb(60, 64, 67);
+  --img-background: #F6F6F6;
+}
+
+ion-back-button {
+  color: var(--text-color-1);
+}
+
+ion-item {
+  --color: var(--text-color-1);
+}
+
+ion-content {
+  background-color: var(--ion-background-color);
 }
 
 ion-card,
 ion-card-content {
   padding: 0rem !important;
   margin: 0rem !important;
+  background-color: var(--card-background);
+  border-color: var(--card-border);
 }
+
+.heading-1 {
+  font-size: 4rem;
+}
+
+.heading-2 {
+  font-size: 2.5rem;
+  color: var(--text-color-1);
+}
+
+.heading-3 {
+  font-size: 1.2rem;
+  color: var(--text-color-1);
+}
+
+.heading-4 {
+  font-size: 1rem;
+  color: var(--text-color-1);
+}
+
+.heading-5 {
+  font-size: 0.7rem;
+  color: var(--text-color-1);
+}
+
+.link {
+  color: var(--link-color);
+}
+
+ion-select {
+  color: var(--text-color-1);
+}
+
+.alert-radio-label {
+  color: var(--text-color-1) !important;
+}
+
+// ion-content {
+//   --offset-bottom: none !important;
+//   --overflow: auto;
+//   background: var(--ion-toolbar-background, var(--ion-background-color, #000000)) !important;
+
+//   &::-webkit-scrollbar {
+//     width: 5px;
+//     height: 5px;
+//     border: 1px solid var(--text-color-1);
+//   }
+
+//   &::-webkit-scrollbar-track {
+//     background: var(--card-background);
+//   }
+
+//   &::-webkit-scrollbar-thumb {
+//     background: var(--icon-color);
+//   }
+
+//   &::-webkit-scrollbar-thumb:hover {
+//     background: var(--link-color);
+//   }
+
+//   .inner-scroll {
+//     scrollbar-width: thin;
+//   }
+// }

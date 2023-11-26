@@ -7,13 +7,14 @@
       <app-theme-toggle></app-theme-toggle>
     </ion-buttons>
     <div class="wrapper">
-      <h1>Sign In</h1>
-      <span class="switch_page">Don't have an account? <a routerLink="/register" class="switch_page_link">Sign
+      <h1 class="heading-2">Sign In</h1>
+      <span class="switch_page heading-4">Don't have an account? <a routerLink="/register"
+          class="switch_page_link link">Sign
           Up</a></span>
       <app-social></app-social>
       <div class="seperator">
         <span class="line"></span>
-        <span class="or">OR</span>
+        <span class="or heading-3">OR</span>
         <span class="line"></span>
       </div>
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -24,13 +25,14 @@
         <ion-item lines="none">
           <ion-label position="floating">Password</ion-label>
           <ion-input type="{{ hide ? 'text' : 'password' }}" name="password" formControlName="password"></ion-input>
-          <ion-icon class="eye_icon" *ngIf="hide" title="Show" name="eye-outline" (click)="eye()"></ion-icon>
-          <ion-icon class="eye_icon" *ngIf="!hide" title="Hide" name="eye-off-outline" (click)="eye()"></ion-icon>
+          <ion-icon class="eye_icon" title="{{ hide ? 'Show' : 'Hide' }}"
+            [name]="hide ? 'eye-outline' : 'eye-off-outline'" (click)="eye()"></ion-icon>
         </ion-item>
-        <a routerLink="/forgetpassword" class="forget_password">Forget Password?</a>
+        <a routerLink="/forgetpassword" class="forget_password link">Forget Password?</a>
         <ion-button type="submit" class="submit">Sign In</ion-button>
       </form>
-      <span class="bottom-description">By signing in, you agree to our Terms of Use and to receive CP Dashboard emails &
+      <span class="bottom-description heading-5">By signing in, you agree to our Terms of Use and to receive CP
+        Dashboard emails &
         updates</span>
     </div>
   </div>

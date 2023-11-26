@@ -24,7 +24,6 @@ a {
 
   .wrapper1 {
     height: 100%;
-    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../../../../assets/home.jpg') center/cover no-repeat;
     display: flex;
     flex-direction: column;
 
@@ -60,10 +59,17 @@ a {
 
           a {
             text-decoration: none;
-            color: #fff;
+            color: var(--text-color-2);
             font-size: 1.2rem;
           }
         }
+      }
+
+      .toggle {
+        position: absolute;
+        display: none;
+        top: 20px;
+        right: 0;
       }
     }
   }
@@ -79,14 +85,13 @@ a {
     width: 90vw;
 
     h1 {
-      font-size: 4rem;
       margin-bottom: 2.5rem;
-      color: #fff;
+      color: var(--text-color-2);
       text-align: center;
     }
 
     p {
-      color: #fff;
+      color: var(--text-color-2);
     }
 
     .description {
@@ -115,7 +120,8 @@ a {
     ion-button {
       text-transform: none;
       --border-radius: 12px;
-      --background: #000;
+      --background: var(--button-background);
+      color: var(--button-text-color);
       margin: 4rem 0 6rem 0;
     }
   }
@@ -127,13 +133,20 @@ a {
       margin: 1rem 0.5rem 0.8rem 0.5rem;
 
       .contest_heading {
-        background-color: #000;
-        color: #fff;
+        background-color: var(--button-background);
+        color: var(--button-text-color);
         border-radius: 15px;
       }
 
+      .contest_data {
+        background: var(--card-background);
+
+        ion-label {
+          color: var(--text-color-2);
+        }
+      }
+
       .more {
-        color: blue;
         display: flex;
         justify-content: end;
         padding-right: 0.5rem;
@@ -157,6 +170,7 @@ a {
       .faq_heading {
         font-size: 1.5rem;
         font-weight: 600;
+        color: var(--text-color-2);
       }
 
       .faq_list {
@@ -170,7 +184,7 @@ a {
           padding: 0.3rem 0;
 
           .question {
-            color: #000;
+            color: var(--text-color-1);
             font-size: 1rem;
             margin: 0 2rem 0.4rem 0;
           }
@@ -188,7 +202,7 @@ a {
 
           .answer {
             transition: 0.3s ease-in;
-            color: #4c4c4c;
+            color: var(--text-color-2);
             font-size: 1rem;
             margin: 0.5rem 2rem 0.4rem 0.4rem;
             display: none;
@@ -275,6 +289,14 @@ a {
               font-size: 1rem;
             }
           }
+
+          li:last-child {
+            display: none;
+          }
+        }
+
+        .toggle {
+          display: block;
         }
 
         .active {

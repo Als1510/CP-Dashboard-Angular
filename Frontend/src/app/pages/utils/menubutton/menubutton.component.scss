@@ -1,13 +1,13 @@
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.sidebar{
+.sidebar {
   z-index: 2;
   position: absolute;
-  top:0;
+  top: 0;
   left: 0;
   height: 100%;
   width: 70px;
@@ -16,27 +16,28 @@
   align-items: center;
   padding: 8px 0;
 
-  .logo_content{
+  .logo_content {
     display: flex;
     align-items: center;
     justify-content: unset;
     margin-top: 0.7rem;
     width: 100%;
 
-    ion-icon{
+    ion-icon {
       margin-left: 11px;
       margin-top: 9px;
       font-size: 30px;
       padding: 10px;
       border-radius: 50%;
+      color: var(--text-color-1);
     }
 
-    ion-icon:hover{
-      background:#dfdfdf;
+    ion-icon:hover {
+      background: var(--hover);
       transition: 0.4s ease-in;
     }
 
-    .logo_name{
+    .logo_name {
       display: none;
       padding: 0 2px;
       height: auto;
@@ -44,38 +45,42 @@
     }
   }
 
-  ul{
+  ul {
     margin-top: 20px;
     margin-bottom: 3rem;
     overflow-y: scroll;
     scrollbar-width: none;
     -ms-overflow-style: none;
     width: 100%;
-    li{
+
+    li {
       padding-left: 13px;
       list-style: none;
       margin: 5px 0;
-      a{
+
+      a {
         text-decoration: none;
         display: flex;
         align-items: center;
         justify-content: flex-start;
         color: #000;
 
-        ion-icon{
+        ion-icon {
           font-size: 25px;
           align-self: center;
           padding: 10px;
+          color: var(--text-color-1);
         }
 
-        span{
+        span {
           display: none;
+          color: var(--text-color-1);
         }
       }
     }
 
-    li:hover{
-      background: rgb(245, 242, 242);
+    li:hover {
+      background: var(--hover);
       border-radius: 12px;
     }
 
@@ -85,9 +90,14 @@
     display: none;
   }
 
-  .logout{
+  .toggle {
     position: absolute;
-    background-color: #fff;
+    bottom: 55px;
+    width: 100%;
+  }
+
+  .logout {
+    position: absolute;
     bottom: 0;
     display: flex;
     align-items: center;
@@ -96,40 +106,45 @@
     padding: 4px;
     height: 60px;
 
-    ion-button{
+    ion-button {
       margin-top: 0.3rem !important;
       justify-self: center;
-      --background: #fff;
+      --background: var(--button-background);
+      color: var(--button-text-color);
       width: 50px !important;
-      ion-icon{
-        color:#000;
+
+      ion-icon {
+        color: var(--button-text-color);
         font-size: 25px !important;
       }
     }
 
-    span{
+    span {
       display: none;
-    } 
+    }
   }
 }
 
-.sidebar.active{
+.sidebar.active {
   width: 220px;
 
-  .logo_content{  
+  .logo_content {
     justify-content: unset;
-    .logo_name{
+
+    .logo_name {
       display: block;
       opacity: 1;
     }
   }
 
-  ul{
-    li{
+  ul {
+    li {
       padding-left: 13px;
-      a{
+
+      a {
         justify-content: unset;
-        span{
+
+        span {
           display: block;
           font-size: 18px;
           align-self: center;
@@ -139,26 +154,26 @@
     }
   }
 
-  .logout{
+  .logout {
     justify-content: unset;
     width: 100%;
     padding-left: 10px;
     height: 60px;
 
-    ion-button{
+    ion-button {
       width: 50px !important;
     }
 
-    span{
+    span {
       display: block;
       font-size: 18px;
       align-self: center;
       margin-left: 15px;
-      color: #000;
-    } 
+      color: var(--text-color-1);
+    }
   }
 }
 
-.activate{
-  border-right: 2px solid black;
+.activate {
+  border-right: 2px solid var(--text-color-1);
 }

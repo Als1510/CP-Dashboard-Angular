@@ -1,60 +1,74 @@
-ion-content{
+ion-content {
   box-sizing: border-box;
   position: absolute;
-  top:0;
-  left: 75px;
-  width: calc(100% - 75px);
+  top: 0;
+  left: 70px;
+  width: calc(100% - 70px);
   height: 100%;
 
-  h1{
+  h1 {
     font-size: 2rem;
     margin-left: 1.3rem;
+    color: var(--text-color-1);
   }
 
-  .wrapper{
+  .wrapper {
     margin: 2rem 0.2rem 0.5rem 0.1rem;
-    ion-card{
+
+    ion-card {
       padding: 3rem 0.5rem !important;
       display: flex;
       flex-direction: row;
       justify-content: center;
       align-items: center;
-      .form_area{
+
+      .form_area {
         width: 50%;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        .form_heading{
+
+        .form_heading {
           font-size: 1.5rem;
           margin: 1rem;
           text-align: center;
         }
-        form{
+
+        form {
           width: 80%;
           display: flex;
           flex-direction: column;
-          ion-item{
-            border-bottom: 0.1px solid #333;
+
+          ion-item {
+            border-bottom: 0.1px solid var(--line-color);
             margin: 0.5rem 0;
+            --background: var(--card-background);
           }
-          ion-button{
+
+          ion-button {
             align-self: center;
             height: 45px;
             width: 150px;
             --border-radius: 15px !important;
             font-size: 14px;
             font-weight: 300px;
-            --background: #000;
-            color: #fff;
+            --background: var(--button-background);
+            color: var(--button-text-color);
+          }
+
+          ion-button[disabled] {
+            --background: var(--button-background-disabled);
           }
         }
       }
-      .form_image{
+
+      .form_image {
         width: 60%;
         display: flex;
         justify-content: center;
-        img{
+
+        img {
           border-radius: 5%;
         }
       }
@@ -63,28 +77,33 @@ ion-content{
 }
 
 @media(max-width: 800px) {
-  ion-content{
-    .wrapper{
+  ion-content {
+    .wrapper {
       margin: 2rem 0.2rem 1rem 0rem;
-      ion-card{
+
+      ion-card {
         padding: 1.5rem 0.3rem !important;
         display: flex;
         flex-direction: column-reverse;
         justify-items: center;
         align-items: center;
-        .form_area{
+
+        .form_area {
           width: 90%;
-          .form_heading{
+
+          .form_heading {
             margin: 2rem 0 1rem 0;
           }
-          form{
+
+          form {
             width: 95%;
           }
         }
-        .form_image{
+
+        .form_image {
           width: 100%;
         }
-      }   
+      }
     }
   }
 }

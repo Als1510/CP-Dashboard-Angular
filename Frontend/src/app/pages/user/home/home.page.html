@@ -1,6 +1,6 @@
 <ion-content>
   <div class="container">
-    <div class="wrapper1">
+    <div class="wrapper1" [ngStyle]="{ 'background': getBackground() }">
       <div class="navbar">
         <ion-icon name="menu-outline" (click)="toggleBtn()"></ion-icon>
         <img src="../../../../assets/icon/homelogo.png" alt="">
@@ -15,10 +15,13 @@
             <app-theme-toggle></app-theme-toggle>
           </li>
         </ul>
+        <span class="toggle">
+          <app-theme-toggle></app-theme-toggle>
+        </span>
       </div>
 
       <div class="main-area">
-        <h1>Create a way you're proud of</h1>
+        <h1 class="heading-1">Create a way you're proud of</h1>
         <p class="description">Discover the platform that gives you the content to improvise, manage your programming
           skills.</p>
         <div class="quote-area">
@@ -48,16 +51,16 @@
               Starts In
             </ion-label>
           </ion-list>
-          <ion-list *ngFor="let contest of contests.slice(0, 5)">
+          <ion-list *ngFor="let contest of contests.slice(0, 5)" class="contest_data">
             <ion-label>
-              <a routerLink="/login">
+              <a routerLink="/login" class="link">
                 {{contest.name}}
               </a>
             </ion-label>
             <ion-label>{{contest.site}}</ion-label>
             <ion-label>{{contest.startIn}}</ion-label>
           </ion-list>
-          <a routerLink="/login" class="more">...more</a>
+          <a routerLink="/login" class="more link">...more</a>
         </div>
         <ng-template #nodata>
           <span class="no_data">No Contest</span>

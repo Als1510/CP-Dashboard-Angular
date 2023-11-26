@@ -2,54 +2,61 @@ ion-slide {
   width: 100% !important;
 }
 
-ion-content{
-  --offset-bottom: auto!important;
+ion-content {
+  --offset-bottom: auto !important;
   --overflow: hidden;
   overflow: auto;
+
   &::-webkit-scrollbar {
     display: none;
   }
+
   box-sizing: border-box;
   position: absolute;
   top: 0px;
-  left: 75px;
-  width: calc(100% - 75px);
+  left: 70px;
+  width: calc(100% - 70px);
   height: calc(100% - 5px);
 
-  .header{
+  .header {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    h1{
+
+    h1 {
       font-size: 2rem;
       margin-left: 1.3rem;
+      color: var(--text-color-1);
     }
 
-    .profile{
+    .profile {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 0.5rem 0.5rem 0 0;
-      
-      .profile_details{
+
+      .profile_details {
         width: 100%;
         display: flex;
         flex-direction: row;
         align-items: center;
-        ion-icon{
+
+        ion-icon {
           font-size: 25px;
           margin-right: 5px;
           cursor: default;
         }
-        .username{
-          display:block;
+
+        .username {
+          display: block;
           padding: 0;
           margin: 0;
           color: #000;
           font-weight: bold;
         }
       }
-      .name{
+
+      .name {
         display: block;
         padding: 0;
         margin: 0;
@@ -58,7 +65,7 @@ ion-content{
     }
   }
 
-  .wrapper1{
+  .wrapper1 {
     margin: 1rem 0.2rem 0 0.1rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(auto, 400px));
@@ -66,47 +73,57 @@ ion-content{
     grid-row-gap: 1rem;
     grid-column-gap: 2rem;
 
-    .card{
+    .card {
       display: flex;
-      height: 150px;
+      height: 180px;
       flex-direction: row;
       justify-content: space-evenly;
       align-items: center;
       padding: 1rem 0.5rem !important;
 
-      ion-card-content{
+      ion-card-content {
         padding: 0 1rem;
         text-align: center;
-        .wrapper1_heading{
+
+        .wrapper1_heading {
           font-size: 2rem;
-          color:#369;
+          color: #369;
         }
 
-        .wrapper1_content{
+        .wrapper1_content {
           font-size: 1rem;
+          color: var(--text-color-1);
         }
       }
 
-      ion-icon{
+      ion-icon {
         font-size: 35px;
       }
     }
-    .card1{
+
+    .card1 {
       @keyframes growProgressBar {
-        0%, 33% { --pgPercentage: 0; }
-        100% { --pgPercentage: var(--value); }
+
+        0%,
+        33% {
+          --pgPercentage: 0;
+        }
+
+        100% {
+          --pgPercentage: var(--value);
+        }
       }
-      
+
       @property --pgPercentage {
         syntax: '<number>';
         inherits: false;
         initial-value: 0;
       }
-      
+
       div[role="progressbar"] {
         --size: 6rem;
-        --fg: #369;
-        --bg: #def;
+        --fg: var(--text-color-1);
+        --bg: #0A95FA;
         --pgPercentage: var(--value);
         animation: growProgressBar 3s 1 forwards;
         width: 6rem;
@@ -114,89 +131,113 @@ ion-content{
         border-radius: 50%;
         display: grid;
         place-items: center;
-        background: radial-gradient(closest-side, white 80%, transparent 0 99.9%, white 0), conic-gradient(var(--fg) calc(var(--pgPercentage) * 1%), var(--bg) 0);
+        background: radial-gradient(closest-side, var(--ion-background-color) 80%, transparent 0 100%, white 0), conic-gradient(var(--fg) calc(var(--pgPercentage) * 1%), var(--bg) 0);
         font-size: 1.5rem;
         color: var(--fg);
       }
-      
+
       div[role="progressbar"]::before {
         counter-reset: percentage var(--registeredPlatform);
         content: counter(percentage) '/5';
       }
     }
 
-    .card3{
+    .card2 {
+      .slide-image {
+        width: 100%;
+        height: 150px;
+        object-fit: contain;
+      }
+    }
+
+    .card3 {
       display: grid;
       grid-template-rows: 10% 90%;
-      h3{
+
+      h3 {
         font-size: 1rem;
         margin: 0.4rem 0 0.5rem 0.2rem !important;
+        color: var(--text-color-1);
       }
+
       grid-row-gap: 1rem;
-      ion-slides{
+
+      ion-slides {
         width: 100% !important;
-        ion-slide{
+
+        ion-slide {
           display: flex;
           align-items: center;
-          justify-content:space-evenly;
-          h3{
+          justify-content: space-evenly;
+
+          h3 {
             font-size: 1.5rem;
           }
-          img{
+
+          img {
             height: 100px;
+            width: 100px;
+            padding: 0.25rem;
+            background: var(--img-background);
+            border-radius: 10%;
+            object-fit: contain;
           }
         }
       }
     }
   }
 
-  .wrapper2{
-    margin: 1rem 0.2rem 0.2rem 0.1rem;
-    .contest_header{
+  .wrapper2 {
+    margin: 1rem 0.3rem 0.2rem 0.3rem;
+
+    .contest_header {
       display: flex;
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
       padding: 0.5rem 1rem;
 
-      .heading{
+      .heading {
         font-size: 1.2rem;
-        color: #000;
+        color: var(--text-color-1);
       }
 
-      .search_by{
+      .search_by {
         display: flex;
         flex-direction: row;
       }
     }
 
-    .contest{
-      .contest_heading_header{
-        .contest_heading_label{
+    .contest {
+      .contest_heading_header {
+        .contest_heading_label {
           font-size: 1rem;
-          color: #000;
+          color: var(--text-color-1);
         }
       }
-      ion-list{
+
+      ion-list {
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
         padding: 1rem 0;
         margin-left: 0.2rem;
-        
-        ion-label{
+
+        ion-label {
           width: 30%;
           text-overflow: ellipsis;
           text-align: center;
           align-self: center;
-          a{
+
+          a {
             text-decoration: none;
+            color: var(--link-color);
           }
         }
       }
     }
 
-    .no_data{
+    .no_data {
       font-size: 1.5rem;
       display: flex;
       justify-content: center;
@@ -206,47 +247,51 @@ ion-content{
 }
 
 @media(max-width: 768px) {
-  ion-content{
-    .header{
-      .profile{
-        .profile_details{
-          .username{
+  ion-content {
+    .header {
+      .profile {
+        .profile_details {
+          .username {
             display: block;
           }
         }
-        .name{
+
+        .name {
           display: block;
         }
       }
     }
-    .wrapper2{
-      .contest_header{
+
+    .wrapper2 {
+      .contest_header {
         display: flex;
         flex-direction: column;
 
-        .heading{
+        .heading {
           font-size: 1.2rem;
           align-self: flex-start;
           color: #000;
         }
 
-        .search_by{
+        .search_by {
           display: flex;
           flex-direction: row;
           align-self: flex-end;
         }
       }
-      .contest{
-        ion-list{
+
+      .contest {
+        ion-list {
           display: flex;
           flex-direction: row;
           justify-content: space-evenly;
           padding: 0.5rem 0;
-          
-          .duration{
+
+          .duration {
             display: none;
           }
-          ion-label{
+
+          ion-label {
             width: 30%;
             text-overflow: ellipsis;
             text-align: center;
@@ -259,73 +304,83 @@ ion-content{
 }
 
 @media(max-width: 480px) {
-  .hide{
+  .hide {
     display: none;
   }
-  ion-content{
-    .header{
-      .profile{
+
+  ion-content {
+    .header {
+      .profile {
         position: absolute;
         background: #fff;
         border-radius: 10px;
         right: 5px;
         top: 5px;
         padding: 0.7rem 0 0 0;
-        .profile_details{
-          .username{
+
+        .profile_details {
+          .username {
             display: none;
           }
-          ion-icon{
+
+          ion-icon {
             font-size: 35px;
             cursor: pointer;
             pointer-events: all;
             margin: 0;
           }
         }
-        .name{
+
+        .name {
           display: none;
         }
       }
     }
 
-    .wrapper1{
-      .card3{
+    .wrapper1 {
+      .card3 {
         grid-row-gap: 0.5rem;
-        ion-slides{
-          ion-slide{
+
+        ion-slides {
+          ion-slide {
             flex-direction: column;
-            justify-content:center;
-            h3{
+            justify-content: center;
+
+            h3 {
               font-size: 1.2rem;
             }
-            img{
+
+            img {
               height: 70px;
             }
           }
         }
       }
     }
-    .wrapper2{
-      .contest_header{
-        .heading{
+
+    .wrapper2 {
+      .contest_header {
+        .heading {
           align-self: center;
         }
 
-        .search_by{
+        .search_by {
           align-self: center;
         }
       }
-      .contest{
-        ion-list{
+
+      .contest {
+        ion-list {
           display: flex;
           flex-direction: row;
           justify-content: space-evenly;
           padding: 1rem 0;
-          
-          .duration{
+
+          .duration {
             display: none;
           }
-          ion-label{
+
+          ion-label {
             width: 30%;
             text-overflow: ellipsis;
             text-align: center;

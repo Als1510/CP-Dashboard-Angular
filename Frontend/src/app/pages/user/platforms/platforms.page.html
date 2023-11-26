@@ -1,20 +1,13 @@
 <ion-content>
   <h1>Platforms</h1>
   <div class="wrapper" id="wrapper">
-    <ion-card *ngIf="platforms.codechef">
-      <img src="../../../../assets/Platforms/codechef.png" alt="">
-      <div class="platform_details">
-        <h2>Codechef</h2>
-        <p class="user">{{platforms.codechef}}</p>
-        <ion-button (click)="navigateTo('codechef')">Show Profile<ion-icon name="arrow-forward-outline"></ion-icon></ion-button>
-      </div>
-    </ion-card>
     <ion-card *ngIf="platforms.codeforces">
       <img src="../../../../assets/Platforms/codeforces.png" alt="">
       <div class="platform_details">
         <h2>Codeforces</h2>
         <p class="user">{{platforms.codeforces}}</p>
-        <ion-button (click)="navigateTo('codeforces')">Show Profile<ion-icon name="arrow-forward-outline"></ion-icon></ion-button>
+        <ion-button (click)="navigateTo('codeforces')">Show Profile<ion-icon
+            name="arrow-forward-outline"></ion-icon></ion-button>
       </div>
     </ion-card>
     <ion-card *ngIf="platforms.leetcode">
@@ -22,7 +15,8 @@
       <div class="platform_details">
         <h2>Leetcode</h2>
         <p class="user">{{platforms.leetcode}}</p>
-        <ion-button (click)="navigateTo('leetcode')">Show Profile<ion-icon name="arrow-forward-outline"></ion-icon></ion-button>
+        <ion-button (click)="navigateTo('leetcode')">Show Profile<ion-icon
+            name="arrow-forward-outline"></ion-icon></ion-button>
       </div>
     </ion-card>
     <ion-card *ngIf="platforms.spoj">
@@ -30,7 +24,8 @@
       <div class="platform_details">
         <h2>Spoj</h2>
         <p class="user">{{platforms.spoj}}</p>
-        <ion-button (click)="navigateTo('spoj')">Show Profile<ion-icon name="arrow-forward-outline"></ion-icon></ion-button>
+        <ion-button (click)="navigateTo('spoj')">Show Profile<ion-icon
+            name="arrow-forward-outline"></ion-icon></ion-button>
       </div>
     </ion-card>
     <ion-card *ngIf="platforms.atcoder">
@@ -38,7 +33,17 @@
       <div class="platform_details">
         <h2>Atcoder</h2>
         <p class="user">{{platforms.atcoder}}</p>
-        <ion-button (click)="navigateTo('atcoder')">Show Profile<ion-icon name="arrow-forward-outline"></ion-icon></ion-button>
+        <ion-button (click)="navigateTo('atcoder')">Show Profile<ion-icon
+            name="arrow-forward-outline"></ion-icon></ion-button>
+      </div>
+    </ion-card>
+    <ion-card *ngIf="platforms.codechef">
+      <img src="../../../../assets/Platforms/codechef.png" alt="">
+      <div class="platform_details">
+        <h2>Codechef</h2>
+        <p class="user">{{platforms.codechef}}</p>
+        <ion-button (click)="navigateTo('codechef')">Show Profile<ion-icon
+            name="arrow-forward-outline"></ion-icon></ion-button>
       </div>
     </ion-card>
   </div>

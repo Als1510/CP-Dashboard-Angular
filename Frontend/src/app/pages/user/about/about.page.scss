@@ -1,19 +1,22 @@
-ion-content{
+ion-content {
   box-sizing: border-box;
   position: absolute;
-  top:0;
+  top: 0;
   left: 70px;
   width: calc(100% - 70px);
   height: 100%;
 
-  h1{
+  .heading {
     font-size: 2rem;
     margin-left: 1.3rem;
+    color: var(--text-color-1);
   }
-  .container{
+
+  .container {
     padding: 2rem;
     height: 550px;
-    .wrapper{
+
+    .wrapper {
       height: 100%;
       background: url('../../../../assets/aboutus.jpeg') no-repeat center/cover;
       display: flex;
@@ -22,18 +25,22 @@ ion-content{
       justify-content: center;
       text-align: center;
       color: #fff;
-      h1{
+
+      h1 {
         font-size: 2.5rem;
         margin-bottom: 4rem;
       }
-      p{
+
+      p {
         margin: 1rem 3rem;
       }
-      .para1{
+
+      .para1 {
         font-size: 1.2rem;
         margin-bottom: 2rem;
       }
-      .para2{
+
+      .para2 {
         font-size: 1rem;
       }
     }
@@ -41,22 +48,26 @@ ion-content{
 }
 
 @media(max-width: 768px) {
-  ion-content{
-    .container{
+  ion-content {
+    .container {
       padding: 1.5rem;
-      .wrapper{
-        h1{
+
+      .wrapper {
+        h1 {
           font-size: 2rem;
           margin-bottom: 3rem;
         }
-        p{
+
+        p {
           margin: 1rem 3rem;
         }
-        .para1{
+
+        .para1 {
           font-size: 1.2rem;
           margin-bottom: 2rem;
         }
-        .para2{
+
+        .para2 {
           font-size: 1rem;
         }
       }
@@ -65,20 +76,24 @@ ion-content{
 }
 
 @media(max-width: 480px) {
-  ion-content{
-    .container{
+  ion-content {
+    .container {
       padding: 1.5rem 1rem;
-      .wrapper{
-        h1{
+
+      .wrapper {
+        h1 {
           font-size: 1.5rem;
         }
-        p{
+
+        p {
           margin: 1rem 1.5rem;
         }
-        .para1{
+
+        .para1 {
           font-size: 1rem;
         }
-        .para2{
+
+        .para2 {
           font-size: 0.8rem;
         }
       }

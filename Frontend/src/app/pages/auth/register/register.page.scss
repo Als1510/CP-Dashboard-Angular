@@ -15,6 +15,12 @@
     --background: #fff !important;
   }
 
+  .theme-toggle {
+    position: fixed;
+    top: 15px;
+    right: 15px;
+  }
+
   .wrapper {
     display: flex;
     flex-direction: column;
@@ -22,13 +28,8 @@
     justify-content: center;
     padding: 0 2rem;
 
-    h1 {
-      font-size: 2.5rem;
-    }
-
     .switch_page {
       margin: 1rem 0 3rem;
-      font-size: 0.9rem;
       text-align: center;
 
       .switch_page_link {
@@ -43,7 +44,7 @@
       align-items: center;
 
       .line {
-        border: 1px solid grey;
+        border: 1px solid var(--line-color);
         min-width: 100px;
         width: 10vw;
       }
@@ -65,10 +66,11 @@
         .eye_icon {
           position: absolute;
           right: 10px;
-          top: 25px;
-          align-self: flex-end;
+          top: 20px;
           cursor: pointer;
           z-index: 5;
+          font-size: 1.5rem;
+          color: var(--icon-color);
         }
       }
 
@@ -85,15 +87,14 @@
       .submit {
         align-self: center;
         margin-top: 1rem;
-        --background: black;
-        color: #fff;
+        --background: var(--button-background);
+        color: var(--button-text-color);
       }
     }
 
     .bottom-description {
       margin-top: 1rem;
       text-align: center;
-      font-size: 0.7rem;
     }
   }
 }

@@ -18,7 +18,7 @@ ion-toggle::part(track) {
 
 ion-toggle.toggle-checked::part(track) {
   background: url("../../../../assets/Utils/moon.png") no-repeat right / contain;
-  background-color: rgba(128, 128, 128, 0.1);
+  background-color: rgba(202, 202, 200, 0.1);
 }
 
 ion-toggle::part(handle),

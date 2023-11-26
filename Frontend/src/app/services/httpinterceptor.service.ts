@@ -5,7 +5,7 @@ import { EMPTY, Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { AlertService } from './alert.service';
 import { LoaderService } from './loader.service';
-import { TokenService } from './token.service';
+import { LocalStorageService } from './localStorage.service';
 
 const TOKEN_HEADER_KEY = 'x-token';
 
@@ -19,12 +19,12 @@ export class HttpinterceptorService {
   constructor(
     private _alertService: AlertService,
     public _router: Router,
-    private _tokenService: TokenService,
+    private _localStorageService: LocalStorageService,
     private _loaderService: LoaderService
   ) { }
 
   getToken() {
-    this.token = this._tokenService.getToken();
+    this.token = this._localStorageService.getToken();
   }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

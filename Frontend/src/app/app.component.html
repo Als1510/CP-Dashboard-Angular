@@ -1,4 +1,4 @@
-<ion-app class="dark">
+<ion-app [ngClass]="{'dark': theme === 'dark'}">
   <ion-router-outlet></ion-router-outlet>
   <app-loader></app-loader>
 </ion-app>

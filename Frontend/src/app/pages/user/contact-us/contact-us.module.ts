@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
 import { ContactUsPageRoutingModule } from './contact-us-routing.module';
 
-import { ContactUsPage } from './contact-us.page';
 import { MenubuttonComponent } from '../../utils/menubutton/menubutton.component';
+import { ThemeToggleComponent } from '../../utils/theme-toggle/theme-toggle.component';
+import { ContactUsPage } from './contact-us.page';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { MenubuttonComponent } from '../../utils/menubutton/menubutton.component
     ReactiveFormsModule,
     ContactUsPageRoutingModule
   ],
-  declarations: [ContactUsPage, MenubuttonComponent]
+  declarations: [ContactUsPage, MenubuttonComponent, ThemeToggleComponent]
 })
-export class ContactUsPageModule {}
+export class ContactUsPageModule { }

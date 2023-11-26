@@ -1,13 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
 import { AboutPageRoutingModule } from './about-routing.module';
 
-import { AboutPage } from './about.page';
 import { MenubuttonComponent } from '../../utils/menubutton/menubutton.component';
+import { ThemeToggleComponent } from '../../utils/theme-toggle/theme-toggle.component';
+import { AboutPage } from './about.page';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { MenubuttonComponent } from '../../utils/menubutton/menubutton.component
     IonicModule,
     AboutPageRoutingModule
   ],
-  declarations: [AboutPage, MenubuttonComponent]
+  declarations: [AboutPage, MenubuttonComponent, ThemeToggleComponent]
 })
-export class AboutPageModule {}
+export class AboutPageModule { }

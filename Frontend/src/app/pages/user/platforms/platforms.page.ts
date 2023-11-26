@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertService } from 'src/app/services/alert.service';
 import { LoaderService } from 'src/app/services/loader.service';
-import { TokenService } from 'src/app/services/token.service';
+import { LocalStorageService } from 'src/app/services/localStorage.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -25,7 +25,7 @@ export class PlatformsPage implements OnInit {
     private _alertService: AlertService,
     private _router: Router,
     private _route: ActivatedRoute,
-    private _tokenService: TokenService
+    private _localStorageService: LocalStorageService
   ) { }
 
   ngOnInit() {
@@ -55,22 +55,22 @@ export class PlatformsPage implements OnInit {
     let platformData = {
       [data]: this.platforms[data]
     }
-    this._tokenService.setPlatform(platformData)
-    this._router.navigate([data], {relativeTo: this._route})
+    this._localStorageService.setPlatform(platformData)
+    this._router.navigate([data], { relativeTo: this._route })
   }
 
   getplatform() {
     this._userSerive.getPlatforms().subscribe(
       async data => {
-      this.platforms = await data['platformData'].platform
-      this._loaderService.isLoading.next(false)
-      this.getUserPlatformData()
-    })
+        this.platforms = await data['platformData'].platform
+        this._loaderService.isLoading.next(false)
+        this.getUserPlatformData()
+      })
   }
 
   getUserPlatformData() {
-    for(let prop in this.platforms) {
-      if(this.platforms[prop]) {
+    for (let prop in this.platforms) {
+      if (this.platforms[prop]) {
         this.platformEntry = true
       }
     }
@@ -81,12 +81,12 @@ export class PlatformsPage implements OnInit {
     let platformName = this.platformForm.get('platformName').value
     let username = this.platformForm.get('username').value
     this._userSerive.updatePlatform(platformName, username).subscribe(
-      data=>{
+      data => {
         this._alertService.presentToast(data['msg'], 'success')
         this.getplatform()
-        this._loaderService.isLoading.next(false)  
+        this._loaderService.isLoading.next(false)
       }
-      )
+    )
     this.hideCard()
   }
 }

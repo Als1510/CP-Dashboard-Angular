@@ -1,159 +1,201 @@
-ion-content{
+ion-content {
   box-sizing: border-box;
   position: absolute;
-  top:0;
-  left: 75px;
+  top: 0;
+  left: 70px;
   margin: 0;
   padding: 0;
-  width: calc(100% - 75px);
+  width: calc(100% - 70px);
   height: 100%;
 
-  .header{
+  .header {
     display: flex;
     flex-direction: row;
     align-items: center;
-    margin:1rem 0 0 1.3rem;
+    margin: 1rem 0 0 1.3rem;
 
-    img{
+    img {
       height: 50px;
+      padding: 0.5rem;
+      background-color: white;
+      border-radius: 10%;
     }
-    h1{
+
+    h1 {
       margin: 0 0 0 1rem;
       font-size: 2rem;
+      color: var(--text-color-1);
     }
   }
 
-  .container{
-    width: calc(100% - 5px);
+  .container {
+    max-width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 1rem 0;
-    
-    .wrapper{
+    margin: 1rem 0.5rem;
+
+    .wrapper {
       width: 100%;
       max-width: 1050px;
       display: grid;
       grid-template-columns: 50% 50%;
       align-items: center;
       justify-content: center;
-      .box{
+
+      .box {
         justify-self: center;
         padding: 1rem !important;
-        h2{
+
+        h2 {
           margin: 0;
+          color: var(--text-color-1);
         }
-        
-        .user_details{
+
+        .user_details {
           margin: 1rem 0 0 1rem;
           display: grid;
           grid-template-columns: 1fr;
           grid-gap: 0.5rem;
-          P{
+
+          P {
             margin: 0.7rem 0;
           }
-          .username{
+
+          .username {
             font-size: 1.2rem;
+            color: var(--text-color-1);
           }
-          .level, .rank, .country, .last_compete, .rated_matches, .affiliation, .twitter, .topcoder, .codeforces, .data{
+
+          .level,
+          .rank,
+          .country,
+          .last_compete,
+          .rated_matches,
+          .affiliation,
+          .twitter,
+          .topcoder,
+          .codeforces,
+          .data {
+            color: var(--text-color-2);
             font-size: 1rem;
             display: flex;
             flex-direction: row;
             align-items: center;
             justify-content: flex-start;
-            ion-icon{
+
+            ion-icon {
               font-size: 25px;
               padding-right: 0.5rem;
             }
-            img{
-              width:30px;
+
+            img {
+              width: 30px;
               padding-right: 0.6rem;
             }
 
-            span{
+            span {
               margin-left: 0.2rem;
             }
           }
 
-          .twitter{
-            ion-icon{
+          .twitter {
+            ion-icon {
               color: rgb(7, 181, 250);
             }
           }
-          .data{
+
+          .data {
             margin: 0.2rem 0 0.2rem 2.1rem;
           }
-       }
+        }
       }
-    
-      img{
+
+      img {
         width: 50%;
         justify-self: center;
         border-radius: 12px;
       }
     }
   }
-    
-  .noData{
-    padding: 4rem 0 !important;
-    width: 100%;
-    p{
+
+  .noData {
+    margin: 2rem 0.4rem !important;
+    padding: 2rem 0;
+
+    p {
       font-size: 2rem;
       text-align: center;
+      color: var(--text-color-2);
     }
   }
 }
 
 @media(max-width: 768px) {
-  ion-content{  
-    .container{      
-      .wrapper{
+  ion-content {
+    .container {
+      .wrapper {
         grid-template-columns: 70% 30%;
-        .box{
+
+        .box {
           padding: 1rem 0 !important;
         }
-    
-        img{
+
+        img {
           width: 80%;
         }
-      } 
+      }
     }
   }
 }
 
 @media(max-width: 500px) {
-  ion-content{  
-    .container{      
-      .wrapper{
+  ion-content {
+    .container {
+      .wrapper {
         grid-template-columns: 1fr;
-        .box{
+
+        .box {
           margin: 1rem 0;
           order: 1;
           padding: 1rem 0 !important;
-          .user_details{
-            .level, .rank, .country, .last_compete, .rated_matches, .affiliation, .twitter, .topcoder, .codeforces, .data{
+
+          .user_details {
+
+            .level,
+            .rank,
+            .country,
+            .last_compete,
+            .rated_matches,
+            .affiliation,
+            .twitter,
+            .topcoder,
+            .codeforces,
+            .data {
               margin: 0.2rem 0;
-              img{
+
+              img {
                 margin: 0;
               }
             }
-  
-            .twitter{
-              ion-icon{
+
+            .twitter {
+              ion-icon {
                 color: rgb(7, 181, 250);
               }
             }
-            .data{
+
+            .data {
               margin-left: 2.1rem;
             }
           }
         }
-    
-        img{
+
+        img {
           margin: 1rem 0;
           width: 70%;
         }
-      } 
+      }
     }
   }
 }

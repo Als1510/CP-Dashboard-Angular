@@ -4,7 +4,7 @@ const TOKEN_KEY = 'x-token'
 @Injectable({
   providedIn: 'root'
 })
-export class TokenService {
+export class LocalStorageService {
 
   constructor() { }
 
@@ -15,7 +15,7 @@ export class TokenService {
 
   public getToken(): string | ' ' {
     let token = localStorage.getItem(TOKEN_KEY);
-    if(token) {
+    if (token) {
       return token
     } else {
       return '';
@@ -57,5 +57,13 @@ export class TokenService {
     localStorage.removeItem('id')
     localStorage.removeItem('username')
     localStorage.removeItem('platform')
+  }
+
+  setTheme(theme) {
+    localStorage.setItem('theme', theme);
+  }
+
+  getTheme() {
+    return localStorage.getItem('theme')
   }
 }

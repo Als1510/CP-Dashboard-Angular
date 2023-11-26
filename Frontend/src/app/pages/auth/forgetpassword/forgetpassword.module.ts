@@ -1,10 +1,11 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 import { ForgetpasswordPageRoutingModule } from './forgetpassword-routing.module';
 
+import { ThemeToggleComponent } from '../../utils/theme-toggle/theme-toggle.component';
 import { ForgetpasswordPage } from './forgetpassword.page';
 
 @NgModule({
@@ -15,6 +16,6 @@ import { ForgetpasswordPage } from './forgetpassword.page';
     IonicModule,
     ForgetpasswordPageRoutingModule
   ],
-  declarations: [ForgetpasswordPage]
+  declarations: [ForgetpasswordPage, ThemeToggleComponent]
 })
-export class ForgetpasswordPageModule {}
+export class ForgetpasswordPageModule { }

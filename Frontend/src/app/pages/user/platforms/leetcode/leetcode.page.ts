@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Chart, registerables } from 'chart.js'
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Chart, registerables } from 'chart.js';
 import { LoaderService } from 'src/app/services/loader.service';
-import { TokenService } from 'src/app/services/token.service';
+import { LocalStorageService } from 'src/app/services/localStorage.service';
+import { ThemeService } from 'src/app/services/theme.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./leetcode.page.scss'],
 })
 
-export class LeetcodePage implements OnInit {
+export class LeetcodePage implements OnInit, OnDestroy {
   pieChart: Chart;
 
   username
@@ -20,13 +21,14 @@ export class LeetcodePage implements OnInit {
   easyRate = 0
   mediumRate = 0
   hardRate = 0
-  chartDataArray = new Array(0,0,0,0)
+  chartDataArray = new Array(0, 0, 0, 0)
   submissionList = new Array()
 
   constructor(
     private _userService: UserService,
     private _loaderService: LoaderService,
-    private _tokenService: TokenService
+    private _localStorageService: LocalStorageService,
+    private _themeService: ThemeService
   ) {
     Chart.register(...registerables)
   }
@@ -39,8 +41,12 @@ export class LeetcodePage implements OnInit {
     this.getUserData2();
   }
 
+  ngOnDestroy(): void {
+    this._loaderService.isLoading.next(false);
+  }
+
   getData() {
-    let platform = this._tokenService.getPlatform();
+    let platform = this._localStorageService.getPlatform();
     this.platform = Object.keys(platform)[0]
     this.username = platform[Object.keys(platform)[0]]
   }
@@ -48,7 +54,7 @@ export class LeetcodePage implements OnInit {
   getUserData() {
     this._userService.getUserDetails(this.platform, this.username).subscribe(
       data => {
-        if(data['status'] == 'OK') {
+        if (data['status'] == 'OK') {
           this.userData = data
           this.easyRate = this.SolveRate(data['easy_questions_solved'], data['total_easy_questions'])
           this.mediumRate = this.SolveRate(data['medium_questions_solved'], data['total_medium_questions'])
@@ -58,7 +64,7 @@ export class LeetcodePage implements OnInit {
           this.chartDataArray[2] = this.userData['hard_questions_solved']
           this.chartDataArray[3] = this.userData['total_problems_solved']
         }
-        setTimeout(()=>{
+        setTimeout(() => {
           this.pieChartMethod()
         }, 200)
         this._loaderService.isLoading.next(false);
@@ -81,7 +87,7 @@ export class LeetcodePage implements OnInit {
             "#F9BBBA",
             "#434348",
           ],
-          borderWidth: 1,
+          borderWidth: 0,
         }],
       },
       options: {
@@ -91,21 +97,31 @@ export class LeetcodePage implements OnInit {
           legend: {
             position: 'bottom',
             labels: {
-              padding: 10,
+              padding: 20,
+              font: {
+                size: 14
+              }
             }
           },
         },
       },
     })
+
+    let labelColor;
+    this._themeService.theme.subscribe((val) => {
+      labelColor = (val === 'dark') ? '#fff' : '#000';
+      this.pieChart.options.plugins.legend.labels.color = labelColor;
+      this.pieChart.update();
+    });
   }
 
   SolveRate(solved, total) {
-    return solved/total;
+    return solved / total;
   }
 
   async getUserData2() {
     let data = await this._userService.getLeetCodeSubmissionStats(this.username)
-    if(data)
+    if (data)
       this.submissionList = data['recentSubmissionList']
   }
 }

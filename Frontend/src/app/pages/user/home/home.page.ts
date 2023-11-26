@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContestService } from 'src/app/services/contest.service';
 import { LoaderService } from 'src/app/services/loader.service';
+import { ThemeService } from 'src/app/services/theme.service';
 import { UtilService } from 'src/app/services/util.service';
 @Component({
   selector: 'app-home',
@@ -9,23 +10,29 @@ import { UtilService } from 'src/app/services/util.service';
 })
 export class HomePage implements OnInit {
 
+  theme: string;
+
   constructor(
     private _contestService: ContestService,
     private _loaderService: LoaderService,
-    private _utilService: UtilService
+    private _utilService: UtilService,
+    private _themeService: ThemeService
   ) { }
 
   contests = new Array();
   platform = new Array()
   element
-  
+
   ngOnInit() {
+    this._themeService.theme.subscribe((val) => {
+      this.theme = val;
+    })
     this.getUpcomingContest()
     this.element = document.querySelectorAll('.faq_icon')
     this._loaderService.isLoading.next(false)
-    this.element.forEach((event)=>{
-      event.addEventListener('click', ()=>{
-        if(event.classList.contains('rotate')) {
+    this.element.forEach((event) => {
+      event.addEventListener('click', () => {
+        if (event.classList.contains('rotate')) {
           event.classList.remove('rotate')
           event.nextSibling.style.display = 'none';
         } else {
@@ -49,5 +56,9 @@ export class HomePage implements OnInit {
         this._loaderService.isLoading.next(false)
       }
     )
+  }
+
+  getBackground() {
+    return `url('../../../../assets/${this.theme === 'dark' ? 'home-dark.jpg' : 'home-light.jpg'}') center/cover no-repeat`;
   }
 }

@@ -1,7 +1,8 @@
-ion-content{
+ion-content {
   height: 100vh;
   width: 100vw;
-  .container{
+
+  .container {
     height: 100%;
     width: auto;
     padding: 1.5rem;
@@ -9,47 +10,58 @@ ion-content{
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
-    img{
+
+    img {
       height: 60%;
       justify-self: center;
       border-radius: 12%;
     }
-    .message{
+
+    .message {
       justify-self: center;
-      p{
+
+      p {
         padding: 0;
         margin: 0;
       }
-      .error{
+
+      .error {
         font-size: 3rem;
         font-weight: bold;
+        color: var(--text-color-1);
       }
-      .msg{
+
+      .msg {
         font-size: 2rem;
+        color: var(--text-color-1);
       }
     }
   }
 }
 
 @media(max-width: 650px) {
-  ion-content{
-    .container{
+  ion-content {
+    .container {
       flex-direction: column;
       padding: 1rem;
       align-items: center;
       justify-content: center;
-      img{
+
+      img {
         height: auto;
         width: 50vw;
       }
-      .message{
+
+      .message {
         margin-top: 3rem;
         align-self: center;
-        .error{
+
+        .error {
           font-size: 3rem;
           font-weight: bold;
         }
-        .msg{
+
+        .msg {
           font-size: 2rem;
         }
       }

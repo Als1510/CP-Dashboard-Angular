@@ -1,24 +1,25 @@
-ion-content{
+ion-content {
   box-sizing: border-box;
   position: absolute;
-  top:0;
+  top: 0;
   left: 70px;
   width: calc(100% - 70px);
   height: 100%;
 
-  h1{
+  h1 {
     font-size: 2rem;
     margin-left: 1.3rem;
+    color: var(--text-color-1);
   }
 
-  .wrapper{
+  .wrapper {
     margin: 1rem;
     display: grid;
     grid-template-columns: 1fr;
     grid-gap: 1rem;
     justify-items: center;
 
-    ion-card{
+    ion-card {
       width: 100%;
       max-width: 1000px;
       padding: 0.5rem 0 !important;
@@ -26,24 +27,31 @@ ion-content{
       flex-direction: row;
       align-items: center;
       justify-content: space-evenly;
-      img{
-        width: 200px;
+
+      img {
+        width: 150px;
+        background-color: var(--img-background);
+        padding: 1rem;
+        border-radius: 10%;
       }
 
-      .platform_details{
-        h2{
-          color: #000;
-        }
-        .user{
-          margin: 2rem 0 2rem 1rem;
-          font-size: 1rem;
+      .platform_details {
+        h2 {
+          color: var(--text-color-1);
         }
 
-        ion-button{
+        .user {
+          margin: 2rem 0 2rem 1rem;
+          font-size: 1rem;
+          color: var(--text-color-2);
+        }
+
+        ion-button {
           text-transform: none;
-          --background: #000;
-          color: #fff;
-          ion-icon{
+          --background: var(--button-background);
+          color: var(--button-text-color);
+
+          ion-icon {
             margin-left: 0.5rem;
           }
         }
@@ -51,16 +59,18 @@ ion-content{
     }
   }
 
-  .noData{
+  .noData {
     height: 50%;
     display: flex;
     align-items: flex-end;
     justify-content: center;
-    h1{
+
+    h1 {
       font-size: 3rem;
       opacity: 0.7;
     }
-    ion-icon{
+
+    ion-icon {
       font-size: 75px;
       opacity: 0.8;
       position: absolute;
@@ -69,7 +79,7 @@ ion-content{
     }
   }
 
-  .modal{
+  .modal {
     position: fixed;
     top: 50%;
     left: 50%;
@@ -78,38 +88,47 @@ ion-content{
     border-radius: 12%;
     z-index: 1000;
     display: none;
+    background: var(--ion-background-color);
 
-    form{
-      .buttons{
+    form {
+      .buttons {
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
-        ion-button{
+
+        ion-button {
           margin-top: 1.5rem;
           height: 40px;
           width: 100px;
           --border-radius: 15px !important;
           font-size: 14px;
           font-weight: 300px;
-          --background: #000;
-          color: #fff;
+          --background: var(--card-background);
+          color: var(--text-color-1);
         }
       }
     }
   }
 
-  ion-fab{
+  ion-fab {
     margin: 0 2rem 1rem 0;
-    ion-fab-button{
-      --background: #000 !important;
-      ion-icon{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    ion-fab-button {
+      --background: var(--button-background);
+      --color: var(--button-text-color);
+
+      ion-icon {
         font-size: 30px !important;
       }
     }
-    
-    .fab-item{
+
+    .fab-item {
       --background: #fff !important;
-      img{
+
+      img {
         padding: 0.3rem;
       }
     }
@@ -117,27 +136,29 @@ ion-content{
 }
 
 @media(max-width: 600px) {
-  ion-content{
-    .wrapper{
+  ion-content {
+    .wrapper {
       margin: 1rem 0.5rem;
-      ion-card{
-        img{
+
+      ion-card {
+        img {
           width: 150px;
         }
-  
-        .platform_details{
-          .user{
+
+        .platform_details {
+          .user {
             margin: 1.5rem 0 1.5rem 1rem;
           }
         }
       }
     }
 
-    .noData{
-      h1{
+    .noData {
+      h1 {
         font-size: 2.5rem;
       }
-      ion-icon{
+
+      ion-icon {
         font-size: 55px;
       }
     }
@@ -145,30 +166,39 @@ ion-content{
 }
 
 @media(max-width: 480px) {
-  ion-content{
-    .wrapper{
+  ion-content {
+    .wrapper {
       margin: 1rem 0.5rem;
-      ion-card{
-        img{
+
+      ion-card {
+        img {
           width: 100px;
         }
-  
-        .platform_details{
-          .user{
+
+        .platform_details {
+          .user {
             margin: 1rem 0 1rem 1rem;
           }
         }
       }
     }
-    .noData{
-      h1{
+
+    .noData {
+      h1 {
         font-size: 2rem;
       }
-      ion-icon{
-       font-size: 45px;
-       bottom: 25%;
-       right: 35%;        
+
+      ion-icon {
+        font-size: 45px;
+        bottom: 25%;
+        right: 35%;
       }
     }
+  }
+}
+
+:host {
+  ion-item {
+    --border-color: var(--line-color);
   }
 }

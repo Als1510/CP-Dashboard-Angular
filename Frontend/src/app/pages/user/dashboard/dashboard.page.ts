@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ContestService } from 'src/app/services/contest.service';
 import { LoaderService } from 'src/app/services/loader.service';
-import { TokenService } from 'src/app/services/token.service';
+import { LocalStorageService } from 'src/app/services/localStorage.service';
+import { ThemeService } from 'src/app/services/theme.service';
 import { UserService } from 'src/app/services/user.service';
 import { UtilService } from 'src/app/services/util.service';
 
@@ -19,47 +20,53 @@ export class DashboardPage implements OnInit {
   value = 0;
   name
   username
+  theme
 
   slideOpts = {
     initialSlide: 0,
     slidesPerView: 1,
-    autoplay:true,
-   };
+    autoplay: true,
+    loop: true,
+  };
 
   constructor(
     private _contestService: ContestService,
     private _utilService: UtilService,
     private _loaderService: LoaderService,
     private _userService: UserService,
-    private _tokenService: TokenService
+    private _localStorageService: LocalStorageService,
+    private _themeService: ThemeService
   ) { }
 
   ngOnInit() {
     this.getUserData()
     this.getUpcomingContest()
     this.getPlatforms()
+    this._themeService.theme.subscribe((val) => {
+      this.theme = val;
+    })
   }
 
   showUser() {
-    if(document.body.clientWidth<480) {
+    if (document.body.clientWidth < 480) {
       document.getElementById('user').classList.add('hide')
-      document.getElementById('username').style.display='block'
-      document.getElementById('name').style.display='block'
-      setTimeout(()=>{
+      document.getElementById('username').style.display = 'block'
+      document.getElementById('name').style.display = 'block'
+      setTimeout(() => {
         document.getElementById('user').classList.remove('hide')
-        document.getElementById('username').style.display=''
-        document.getElementById('name').style.display=''
+        document.getElementById('username').style.display = ''
+        document.getElementById('name').style.display = ''
       }, 2500)
     }
   }
 
   getUserData() {
-    this.name = this._tokenService.getName();
-    this.username = this._tokenService.getUserName();
+    this.name = this._localStorageService.getName();
+    this.username = this._localStorageService.getUserName();
   }
 
   platformChange(data) {
-    if(data == "all") {
+    if (data == "all") {
       this.platform = new Array()
     } else {
       this.platform = new Array(data)
@@ -68,7 +75,7 @@ export class DashboardPage implements OnInit {
   }
 
   timeChange(data) {
-    if(data == "all") {
+    if (data == "all") {
       this.time = new Array()
     } else {
       this.time = new Array(data)
@@ -79,11 +86,11 @@ export class DashboardPage implements OnInit {
   getPlatforms() {
     this._userService.getPlatforms().subscribe(
       data => {
-        for(let prop in data['platformData'].platform) {
-          if(data['platformData'].platform[prop])
+        for (let prop in data['platformData'].platform) {
+          if (data['platformData'].platform[prop])
             this.registeredPlatform++
         }
-        this.value = 20*this.registeredPlatform
+        this.value = 20 * this.registeredPlatform
         this._loaderService.isLoading.next(false);
       }
     )
