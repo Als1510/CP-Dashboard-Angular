@@ -14,7 +14,7 @@ import { UtilService } from 'src/app/services/util.service';
 export class DashboardPage implements OnInit {
 
   contestsData: any = [];
-  contestPlatforms: any = ["a", "b", "c"];
+  contestPlatforms: any = [];
   selectedPlatforms: any = [];
   contests: any = [];
   time = new Array()
@@ -41,9 +41,9 @@ export class DashboardPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.getUserData()
-    // this.getPlatforms()
-    // this.getUpcomingContest()
+    this.getUserData()
+    this.getPlatforms()
+    this.getUpcomingContest()
   }
 
   showUser() {
