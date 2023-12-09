@@ -62,30 +62,11 @@
       <div class="contest_header">
         <ion-label class="heading">Upcoming Contests</ion-label>
         <div class="search_by">
-          <div class="search">
-            <ion-select (ionChange)="platformChange($event.target.value)" cancelText="Cancel" okText="Okay"
-              placeholder="Platform">
-              <ion-select-option value="all">All</ion-select-option>
-              <ion-select-option value="codechef">Codechef</ion-select-option>
-              <ion-select-option value="codeforces">Codeforces</ion-select-option>
-              <ion-select-option value="leetcode">Leetcode</ion-select-option>
-              <ion-select-option value="hackerrank">Hackerrank</ion-select-option>
-              <ion-select-option value="hackerearth">Hacker Earth</ion-select-option>
-              <ion-select-option value="atcoder">Atcoder</ion-select-option>
-              <ion-select-option value="spoj">SPOJ</ion-select-option>
-            </ion-select>
-          </div>
-
-          <div class="search">
-            <ion-select (ionChange)="timeChange($event.target.value)" cancelText="Cancel" okText="Okay"
-              placeholder="Time">
-              <ion-select-option value="all" selected="all">All</ion-select-option>
-              <ion-select-option value="today">Today</ion-select-option>
-              <ion-select-option value="tomorrow">Tomorrow</ion-select-option>
-              <ion-select-option value="week">Week</ion-select-option>
-              <ion-select-option value="month">Month</ion-select-option>
-            </ion-select>
-          </div>
+          <ion-select (ionChange)="platformChange($event.target.value)" cancelText="Cancel" okText="Okay"
+            placeholder="Platform" [multiple]="true">
+            <ion-select-option *ngFor="let platform of contestPlatforms" [value]="platform">{{platform |
+              uppercase}}</ion-select-option>
+          </ion-select>
         </div>
       </div>
       <ion-card-content class="contest" *ngIf="contests.length>0; else nodata">
@@ -97,23 +78,29 @@
             Platform
           </ion-label>
           <ion-label class="contest_heading_label">
-            Starts in
+            Start
+          </ion-label>
+          <ion-label class="contest_heading_label">
+            Starts In
           </ion-label>
           <ion-label class="contest_heading_label duration">
             Duration
           </ion-label>
         </ion-list>
-        <ion-list *ngFor="let contest of contests">
+        <ion-list *ngFor="let contest of contests" class="contest_data">
           <ion-label>
             <a [href]="contest.url" target="_blank">
               {{contest.name}}
             </a>
           </ion-label>
           <ion-label>
-            {{contest.site}}
+            {{contest.platform}}
           </ion-label>
           <ion-label>
-            {{contest.startIn}}
+            {{contest.startsOn}}
+          </ion-label>
+          <ion-label>
+            {{contest.startsIn}}
           </ion-label>
           <ion-label class="duration">
             {{contest.duration}}

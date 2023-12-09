@@ -42,23 +42,27 @@
         <div class="contest" *ngIf="contests.length>0; else nodata">
           <ion-list class="contest_heading">
             <ion-label class="contest_heading_label">
+              Contest
+            </ion-label>
+            <ion-label class="contest_heading_label">
               Platform
             </ion-label>
             <ion-label class="contest_heading_label">
-              Contest
+              Start
             </ion-label>
             <ion-label class="contest_heading_label">
               Starts In
             </ion-label>
           </ion-list>
-          <ion-list *ngFor="let contest of contests.slice(0, 5)" class="contest_data">
+          <ion-list *ngFor="let contest of contests" class="contest_data">
             <ion-label>
               <a routerLink="/login" class="link">
                 {{contest.name}}
               </a>
             </ion-label>
-            <ion-label>{{contest.site}}</ion-label>
-            <ion-label>{{contest.startIn}}</ion-label>
+            <ion-label>{{contest.platform}}</ion-label>
+            <ion-label>{{contest.startsOn}}</ion-label>
+            <ion-label>{{contest.startsIn}}</ion-label>
           </ion-list>
           <a routerLink="/login" class="more link">...more</a>
         </div>

@@ -43,6 +43,7 @@
   --card-background: #fff;
   --hover: rgb(245, 242, 242);
   --img-background: #fff;
+  --checked: #000;
 }
 
 .dark {
@@ -57,6 +58,7 @@
   --card-border: #161b1f;
   --hover: rgb(60, 64, 67);
   --img-background: #F6F6F6;
+  --checked: #fff;
 }
 
 ion-back-button {
@@ -113,6 +115,28 @@ ion-select {
 
 .alert-radio-label {
   color: var(--text-color-1) !important;
+}
+
+.alert-wrapper {
+  background: var(--card-background) !important;
+  border-color: var(--card-border) !important;
+
+  .alert-checkbox-icon {
+    border-color: var(--text-color-2);
+  }
+
+  [aria-checked=true].sc-ion-alert-md .alert-checkbox-icon.sc-ion-alert-md {
+    border-color: var(--text-color-2) !important;
+    background-color: var(--ion-background-color) !important;
+  }
+
+  [aria-checked=true].sc-ion-alert-md .alert-checkbox-inner.sc-ion-alert-md {
+    border-color: var(--checked) !important;
+  }
+
+  .alert-checkbox-label {
+    color: var(--text-color-1);
+  }
 }
 
 // ion-content {

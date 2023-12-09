@@ -36,6 +36,7 @@ app.use('/api/validation', require('./routes/api/validation'))
 app.use('/api/auth', require('./routes/api/auth'))
 app.use('/api/platform', require('./routes/api/platform'))
 app.use('/api/social', require('./routes/api/social'))
+app.use('/api/contest', require('./routes/api/contest'))
 
 const PORT = process.env.PORT
 

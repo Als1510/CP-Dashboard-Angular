@@ -19,11 +19,11 @@ export class HomePage implements OnInit {
     private _themeService: ThemeService
   ) { }
 
-  contests = new Array();
-  platform = new Array()
+  contests: any = [];
   element
 
   ngOnInit() {
+    this._loaderService.isLoading.next(true);
     this._themeService.theme.subscribe((val) => {
       this.theme = val;
     })
@@ -49,10 +49,9 @@ export class HomePage implements OnInit {
   }
 
   async getUpcomingContest() {
-    await this._contestService.upcomingContest().subscribe(
-      async data => {
-        let platformsData = await this._utilService.extractPlatforms(data, this.platform)
-        this.contests = await this._utilService.convertDateinIST(platformsData)
+    this._contestService.getUpcomingOngoingContest().subscribe(
+      (data: any) => {
+        this.contests = data;
         this._loaderService.isLoading.next(false)
       }
     )

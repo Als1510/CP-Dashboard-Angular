@@ -13,14 +13,16 @@ import { UtilService } from 'src/app/services/util.service';
 })
 export class DashboardPage implements OnInit {
 
-  contests = new Array();
-  platform = new Array()
+  contestsData: any = [];
+  contestPlatforms: any = ["a", "b", "c"];
+  selectedPlatforms: any = [];
+  contests: any = [];
   time = new Array()
   registeredPlatform = 0;
   value = 0;
-  name
-  username
-  theme
+  name: string;
+  username: string;
+  theme: string;
 
   slideOpts = {
     initialSlide: 0,
@@ -39,12 +41,9 @@ export class DashboardPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getUserData()
-    this.getUpcomingContest()
-    this.getPlatforms()
-    this._themeService.theme.subscribe((val) => {
-      this.theme = val;
-    })
+    // this.getUserData()
+    // this.getPlatforms()
+    // this.getUpcomingContest()
   }
 
   showUser() {
@@ -66,21 +65,12 @@ export class DashboardPage implements OnInit {
   }
 
   platformChange(data) {
-    if (data == "all") {
-      this.platform = new Array()
-    } else {
-      this.platform = new Array(data)
-    }
-    this.getUpcomingContest()
+    this.selectedPlatforms = data;
+    this.filterContestsByPlatform();
   }
 
-  timeChange(data) {
-    if (data == "all") {
-      this.time = new Array()
-    } else {
-      this.time = new Array(data)
-    }
-    this.getUpcomingContest()
+  filterContestsByPlatform() {
+    this.contests = (this.selectedPlatforms.length) ? this.contestsData.filter(contest => this.selectedPlatforms.includes(contest.platform)) : this.contestsData;
   }
 
   getPlatforms() {
@@ -91,18 +81,17 @@ export class DashboardPage implements OnInit {
             this.registeredPlatform++
         }
         this.value = 20 * this.registeredPlatform
-        this._loaderService.isLoading.next(false);
       }
     )
   }
 
   async getUpcomingContest() {
-    this._contestService.upcomingContest().subscribe(
+    this._contestService.getAllUpcomingOngoingContest().subscribe(
       data => {
+        this.contestsData = data;
+        this.contestPlatforms = [...new Set(this.contestsData.map(contest => contest.platform))];
+        this.filterContestsByPlatform();
         this._loaderService.isLoading.next(false);
-        let platformData = this._utilService.extractPlatforms(data, this.platform)
-        let timeData = this._utilService.extractTime(platformData, this.time)
-        this.contests = this._utilService.convertDateinIST(timeData)
       }
     )
   }

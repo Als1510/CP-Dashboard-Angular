@@ -9,7 +9,7 @@ export class UtilService {
 
   extractPlatforms(data, platformArray) {
     let newData = [];
-    if(platformArray.length > 0) {
+    if (platformArray.length > 0) {
       data.forEach(event => {
         platformArray.forEach(platform => {
           if (event.url.includes(platform)) {
@@ -24,27 +24,27 @@ export class UtilService {
   }
 
   extractTime(data, time) {
-    if(time.length > 0) {
+    if (time.length > 0) {
       let newData = [];
       let dateToCalculate = new Date(new Date().toLocaleString("en-US", { timeZone: 'Asia/Kolkata' }))
-      if(time == 'today') {
+      if (time == 'today') {
         dateToCalculate = new Date(+new Date().setHours(23, 59, 59, 59))
       }
-      else if(time == 'tomorrow') {
-        dateToCalculate = new Date(+new Date().setHours(23, 59, 59, 59) + 1*86400000)
+      else if (time == 'tomorrow') {
+        dateToCalculate = new Date(+new Date().setHours(23, 59, 59, 59) + 1 * 86400000)
       }
-      else if(time == 'week') {
-        dateToCalculate = new Date(+new Date().setHours(23, 59, 59, 59) + 7*86400000)
+      else if (time == 'week') {
+        dateToCalculate = new Date(+new Date().setHours(23, 59, 59, 59) + 7 * 86400000)
       }
-      else if(time == 'month') {
-        dateToCalculate = new Date(dateToCalculate.getFullYear(), dateToCalculate.getMonth()+1, 1, 0, 0, -1);
+      else if (time == 'month') {
+        dateToCalculate = new Date(dateToCalculate.getFullYear(), dateToCalculate.getMonth() + 1, 1, 0, 0, -1);
       }
 
       data.forEach(event => {
         let eventDate = new Date(new Date(event.start_time).toLocaleString("en-US", { timeZone: 'Asia/Kolkata' }))
-        if((dateToCalculate.valueOf() - eventDate.valueOf()) > 0) {
+        if ((dateToCalculate.valueOf() - eventDate.valueOf()) > 0) {
           newData.push(event);
-        } 
+        }
       })
 
       return newData;
@@ -60,13 +60,13 @@ export class UtilService {
     let days = Math.floor((totalD - years * 365 * 60 * 60 * 24 - months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
     let hours = Math.floor((totalD - years * 365 * 60 * 60 * 24 - months * 30 * 60 * 60 * 24 - days * 60 * 60 * 24) / (60 * 60));
     let minutes = Math.floor((totalD - years * 365 * 60 * 60 * 24 - months * 30 * 60 * 60 * 24 - days * 60 * 60 * 24 - hours * 60 * 60) / (60));
-    
+
     let startIn = '';
-    
+
     if (days > 0) {
-      if(days == 1) 
+      if (days == 1)
         startIn += days + ' day '
-      else 
+      else
         startIn += days + ' days '
     }
     if (hours > 0) {
