@@ -4,9 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
+import { SharedModule } from '../../utils/shared.module';
 import { HomePageRoutingModule } from './home-routing.module';
-
-import { ThemeToggleComponent } from '../../utils/theme-toggle/theme-toggle.component';
 import { HomePage } from './home.page';
 
 @NgModule({
@@ -14,8 +13,9 @@ import { HomePage } from './home.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    HomePageRoutingModule
+    HomePageRoutingModule,
+    SharedModule
   ],
-  declarations: [HomePage, ThemeToggleComponent]
+  declarations: [HomePage]
 })
 export class HomePageModule { }

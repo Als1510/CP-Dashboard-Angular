@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ResourcesPageRoutingModule } from './resources-routing.module';
 
 import { MenubuttonComponent } from '../../utils/menubutton/menubutton.component';
-import { ThemeToggleComponent } from '../../utils/theme-toggle/theme-toggle.component';
+import { SharedModule } from '../../utils/shared.module';
 import { ResourcesPage } from './resources.page';
 
 @NgModule({
@@ -15,8 +15,9 @@ import { ResourcesPage } from './resources.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    ResourcesPageRoutingModule
+    ResourcesPageRoutingModule,
+    SharedModule
   ],
-  declarations: [ResourcesPage, MenubuttonComponent, ThemeToggleComponent]
+  declarations: [ResourcesPage, MenubuttonComponent]
 })
 export class ResourcesPageModule { }

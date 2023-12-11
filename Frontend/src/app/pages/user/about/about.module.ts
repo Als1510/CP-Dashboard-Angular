@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AboutPageRoutingModule } from './about-routing.module';
 
 import { MenubuttonComponent } from '../../utils/menubutton/menubutton.component';
-import { ThemeToggleComponent } from '../../utils/theme-toggle/theme-toggle.component';
+import { SharedModule } from '../../utils/shared.module';
 import { AboutPage } from './about.page';
 
 @NgModule({
@@ -15,8 +15,9 @@ import { AboutPage } from './about.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    AboutPageRoutingModule
+    AboutPageRoutingModule,
+    SharedModule
   ],
-  declarations: [AboutPage, MenubuttonComponent, ThemeToggleComponent]
+  declarations: [AboutPage, MenubuttonComponent]
 })
 export class AboutPageModule { }

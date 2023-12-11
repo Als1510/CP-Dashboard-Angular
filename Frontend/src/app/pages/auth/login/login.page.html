@@ -17,7 +17,7 @@
         <span class="or heading-3">OR</span>
         <span class="line"></span>
       </div>
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" autocomplete="off">
         <ion-item lines="none">
           <ion-label position="floating">Email</ion-label>
           <ion-input type="email" name="email" formControlName="email"></ion-input>

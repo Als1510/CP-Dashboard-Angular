@@ -7,15 +7,15 @@ import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoaderComponent } from './pages/utils/loader/loader.component';
+import { SharedModule } from './pages/utils/shared.module';
 import { HttpinterceptorService } from './services/httpinterceptor.service';
 import { LoaderService } from './services/loader.service';
 import { ThemeService } from './services/theme.service';
 
 @NgModule({
-  declarations: [AppComponent, LoaderComponent],
+  declarations: [AppComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule, SharedModule],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     { provide: HTTP_INTERCEPTORS, useClass: HttpinterceptorService, multi: true },

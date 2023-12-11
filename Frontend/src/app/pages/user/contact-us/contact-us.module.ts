@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { ContactUsPageRoutingModule } from './contact-us-routing.module';
 
 import { MenubuttonComponent } from '../../utils/menubutton/menubutton.component';
-import { ThemeToggleComponent } from '../../utils/theme-toggle/theme-toggle.component';
+import { SharedModule } from '../../utils/shared.module';
 import { ContactUsPage } from './contact-us.page';
 
 @NgModule({
@@ -16,8 +16,9 @@ import { ContactUsPage } from './contact-us.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    ContactUsPageRoutingModule
+    ContactUsPageRoutingModule,
+    SharedModule
   ],
-  declarations: [ContactUsPage, MenubuttonComponent, ThemeToggleComponent]
+  declarations: [ContactUsPage, MenubuttonComponent]
 })
 export class ContactUsPageModule { }

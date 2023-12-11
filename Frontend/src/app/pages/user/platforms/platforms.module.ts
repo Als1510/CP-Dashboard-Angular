@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PlatformsPageRoutingModule } from './platforms-routing.module';
 
 import { MenubuttonComponent } from '../../utils/menubutton/menubutton.component';
-import { ThemeToggleComponent } from '../../utils/theme-toggle/theme-toggle.component';
+import { SharedModule } from '../../utils/shared.module';
 import { PlatformsPage } from './platforms.page';
 
 @NgModule({
@@ -16,8 +16,9 @@ import { PlatformsPage } from './platforms.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    PlatformsPageRoutingModule
+    PlatformsPageRoutingModule,
+    SharedModule
   ],
-  declarations: [PlatformsPage, MenubuttonComponent, ThemeToggleComponent],
+  declarations: [PlatformsPage, MenubuttonComponent],
 })
 export class PlatformsPageModule { }

@@ -12,10 +12,10 @@ export class LoaderComponent implements OnInit {
 
   constructor(private _loaderService: LoaderService) {
     this._loaderService.isLoading.subscribe((v) => {
-      this.loading = v
+      this.loading = v;
     })
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 }

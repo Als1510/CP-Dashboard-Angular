@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { DashboardPageRoutingModule } from './dashboard-routing.module';
 
 import { MenubuttonComponent } from '../../utils/menubutton/menubutton.component';
-import { ThemeToggleComponent } from '../../utils/theme-toggle/theme-toggle.component';
+import { SharedModule } from '../../utils/shared.module';
 import { DashboardPage } from './dashboard.page';
 
 @NgModule({
@@ -15,10 +15,11 @@ import { DashboardPage } from './dashboard.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    DashboardPageRoutingModule
+    DashboardPageRoutingModule,
+    SharedModule
   ],
   declarations: [DashboardPage,
-    MenubuttonComponent, ThemeToggleComponent
+    MenubuttonComponent
   ]
 })
 export class DashboardPageModule { }

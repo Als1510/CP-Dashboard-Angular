@@ -6,7 +6,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { LoginPageRoutingModule } from './login-routing.module';
 
-import { ThemeToggleComponent } from '../../utils/theme-toggle/theme-toggle.component';
+import { SharedModule } from '../../utils/shared.module';
 import { SocialComponent } from '../social/social.component';
 import { LoginPage } from './login.page';
 
@@ -17,8 +17,9 @@ import { LoginPage } from './login.page';
     IonicModule,
     ReactiveFormsModule,
     LoginPageRoutingModule,
+    SharedModule
   ],
-  declarations: [LoginPage, ThemeToggleComponent, SocialComponent],
+  declarations: [LoginPage, SocialComponent],
   providers: []
 })
 export class LoginPageModule { }
