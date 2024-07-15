@@ -1,8 +1,10 @@
 const express = require('express');
 const connectDB = require('./config/db');
+const scrapeContests = require('./config/scrap');
 const cors = require('cors');
 const passport = require('passport');
 const app = express();
+const cron = require('node-cron');
 require('dotenv').config();
 require('./routes/api/google_auth');
 require('./routes/api/github_auth');
@@ -23,6 +25,7 @@ app.use((req, res, next) => {
   next();
 });
 connectDB()
+cron.schedule('0 * * * *', scrapeContests);
 app.use(express.static('config'))
 
 app.use(express.json({ extended: false }))
@@ -38,6 +41,6 @@ app.use('/api/platform', require('./routes/api/platform'))
 app.use('/api/social', require('./routes/api/social'))
 app.use('/api/contest', require('./routes/api/contest'))
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT;
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`))
