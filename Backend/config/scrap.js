@@ -11,11 +11,6 @@ const convertTimeToMilliseconds = (timeString) => {
   return ((hours * 60 + minutes) * 60 + seconds) * 1000;
 };
 
-const convertDateTimeToMilliseconds = (targetDateTimeString) => {
-  const currentDateTime = new Date();
-  const calculatedMilliSeconds = new Date(targetDateTimeString) - currentDateTime;
-  return (calculatedMilliSeconds > 0) ? calculateTime(calculatedMilliSeconds) : 'Started';
-}
 
 function getStartOnDate(inputDate) {
   inputDate = new Date(inputDate);
@@ -29,24 +24,18 @@ function getStartOnDate(inputDate) {
 }
 
 const calculateTime = (duration) => {
-  let totalD = Math.abs(Math.floor(duration / 1000));
-  let years = Math.floor(totalD / (365 * 60 * 60 * 24));
-  let months = Math.floor((totalD - years * 365 * 60 * 60 * 24) / (30 * 60 * 60 * 24));
-  let days = Math.floor((totalD - years * 365 * 60 * 60 * 24 - months * 30 * 60 * 60 * 24) / (60 * 60 * 24));
-  let hours = Math.floor((totalD - years * 365 * 60 * 60 * 24 - months * 30 * 60 * 60 * 24 - days * 60 * 60 * 24) / (60 * 60));
-  let minutes = Math.floor((totalD - years * 365 * 60 * 60 * 24 - months * 30 * 60 * 60 * 24 - days * 60 * 60 * 24 - hours * 60 * 60) / (60));
+  const totalSeconds = Math.floor(duration / 1000);
+  const days = Math.floor(totalSeconds / (60 * 60 * 24));
+  const hours = Math.floor((totalSeconds % (60 * 60 * 24)) / (60 * 60));
+  const minutes = Math.floor((totalSeconds % (60 * 60)) / 60);
 
-  let startIn = '';
-  if (days > 0)
-    startIn = (days == 1) ? days + ' day ' : days + ' days ';
-  if (hours > 0)
-    startIn += (hours == 1) ? hours + ' hour ' : hours + ' hours ';
-  if (minutes > 0)
-    startIn += (minutes === 1) ? minutes + ' minute' : minutes + ' minutes';
-  if (!startIn) {
-    startIn += '< minute'
-  }
-  return startIn
+  let result = '';
+  if (days > 0) result += `${days} day${days > 1 ? 's' : ''} `;
+  if (hours > 0) result += `${hours} hour${hours > 1 ? 's' : ''} `;
+  if (minutes > 0) result += `${minutes} minute${minutes > 1 ? 's' : ''}`;
+  if (!result) result += '< minute';
+
+  return result.trim();
 }
 
 async function getContestsFromPlatforms() {
@@ -72,8 +61,7 @@ async function getContestsFromPlatforms() {
         currentUTCDate.setUTCDate(currentUTCDate.getUTCDate() + dayDifference);
         const startTime = currentUTCDate.toISOString().replace(/\.\d+Z$/, '');
         const startsOn = getStartOnDate(startTime);
-        const startsIn = convertDateTimeToMilliseconds(startTime);
-        contests.push({ name, startTime, startsOn, startsIn, duration, url, platform: 'leetcode' });
+        contests.push({ name, startTime, startsOn, duration, url, platform: 'leetcode' });
       }
     });
   } catch (error) {
@@ -91,10 +79,9 @@ async function getContestsFromPlatforms() {
       const startTime = new Date(new Date($(columns[1]).text().trim()).
         toLocaleString("en-US", { timeZone: 'Asia/Kolkata' })).toISOString().replace(/\.\d+Z$/, '');
       const startsOn = getStartOnDate(startTime);
-      const startsIn = convertDateTimeToMilliseconds(startTime);
       const endTime = $(columns[2]).text().trim();
       const duration = calculateTime(new Date(endTime) - new Date(startTime));
-      contests.push({ name, startTime, startsOn, startsIn, duration, url, platform: 'spoj' });
+      contests.push({ name, startTime, startsOn, duration, url, platform: 'spoj' });
     });
   } catch (error) {
     console.error('Error fetching spoj contests:', error.message);
@@ -113,12 +100,13 @@ async function getContestsFromPlatforms() {
         startTime.setMinutes(startTime.getMinutes() + 480);
         startTime = startTime.toISOString().replace(/\.\d+Z$/, '');
         const startsOn = getStartOnDate(startTime);
-        const startsIn = convertDateTimeToMilliseconds(startTime);
         const currentTime = new Date();
         const duration = calculateTime(convertTimeToMilliseconds($(columns[3]).text()));
         const isContestStarted = new Date(startTime) < currentTime;
-        const url = isContestStarted ? `https://contest/${id}` : `https://contestRegistrations/${id}`
-        contests.push({ name, startTime, startsOn, startsIn, duration, url, platform: 'codeforces' });
+        const url = isContestStarted
+          ? `https://codeforces.com/contest/${id}`
+          : `https://codeforces.com/contestRegistration/${id}?backUrl=%2Fcontests%2F${id}`;
+        contests.push({ name, startTime, startsOn, duration, url, platform: 'codeforces' });
       }
     });
   } catch (error) {
@@ -135,11 +123,10 @@ async function getContestsFromPlatforms() {
       startTime.setMinutes(startTime.getMinutes() - startTime.getTimezoneOffset());
       startTime = startTime.toISOString().replace(/\.\d+Z$/, '');;
       const startsOn = getStartOnDate(startTime);
-      const startsIn = convertDateTimeToMilliseconds(startTime);
       const name = removeSpecialCharacters($(columns[1]).text().trim());
       const url = "https://atcoder.jp" + $(columns[1]).find('a').attr('href');
       const duration = calculateTime(convertTimeToMilliseconds($(columns[2]).text()));
-      contests.push({ name, startTime, startsOn, startsIn, duration, url, platform: 'atcoder' });
+      contests.push({ name, startTime, startsOn, duration, url, platform: 'atcoder' });
     });
     $('#contest-table-upcoming .table-default tbody tr').each((index, element) => {
       const columns = $(element).find('td');
@@ -147,21 +134,19 @@ async function getContestsFromPlatforms() {
       startTime.setMinutes(startTime.getMinutes() - startTime.getTimezoneOffset());
       startTime = startTime.toISOString().replace(/\.\d+Z$/, '');
       const startsOn = getStartOnDate(startTime);
-      const startsIn = convertDateTimeToMilliseconds(startTime);
       const name = removeSpecialCharacters($(columns[1]).text().trim());
       const url = "https://atcoder.jp" + $(columns[1]).find('a').attr('href');
       const duration = calculateTime(convertTimeToMilliseconds($(columns[2]).text()));
-      contests.push({ name, startTime, startsOn, startsIn, duration, url, platform: 'atcoder' });
+      contests.push({ name, startTime, startsOn, duration, url, platform: 'atcoder' });
     });
     $('#contest-table-permanent .table-default tbody tr').each((index, element) => {
       const columns = $(element).find('td');
       const startTime = new Date(new Date("01 January 2022").toLocaleString("en-US", { timeZone: 'Asia/Kolkata' })).toISOString().replace(/\.\d+Z$/, '');
       const startsOn = getStartOnDate(startTime);
-      const startsIn = convertDateTimeToMilliseconds(startTime);
       const name = removeSpecialCharacters($(columns[0]).text().trim());
       const url = "https://atcoder.jp" + $(columns[0]).find('a').attr('href');
       const duration = 'Infinite';
-      contests.push({ name, startTime, startsOn, startsIn, duration, url, platform: 'atcoder' });
+      contests.push({ name, startTime, startsOn, duration, url, platform: 'atcoder' });
     });
   } catch (error) {
     console.error('Error fetching AtCoder contests:', error.message);

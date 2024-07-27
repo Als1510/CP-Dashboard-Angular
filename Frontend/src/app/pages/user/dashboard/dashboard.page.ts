@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { interval, Subscription } from 'rxjs';
 import { ContestService } from 'src/app/services/contest.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { LocalStorageService } from 'src/app/services/localStorage.service';
@@ -11,7 +12,7 @@ import { UtilService } from 'src/app/services/util.service';
   templateUrl: './dashboard.page.html',
   styleUrls: ['./dashboard.page.scss'],
 })
-export class DashboardPage implements OnInit {
+export class DashboardPage implements OnInit, OnDestroy {
 
   contestsData: any = [];
   contestPlatforms: any = [];
@@ -23,6 +24,7 @@ export class DashboardPage implements OnInit {
   name: string;
   username: string;
   theme: string;
+  countDownInterval: Subscription;
 
   slideOpts = {
     initialSlide: 0,
@@ -41,9 +43,15 @@ export class DashboardPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getUserData()
-    this.getPlatforms()
-    this.getUpcomingContest()
+    this.getUserData();
+    this.getPlatforms();
+    this.getUpcomingOngoingContest().then(() => {
+      this.startCountDown();
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.countDownInterval.unsubscribe();
   }
 
   showUser() {
@@ -85,14 +93,31 @@ export class DashboardPage implements OnInit {
     )
   }
 
-  async getUpcomingContest() {
-    this._contestService.getAllUpcomingOngoingContest().subscribe(
-      data => {
-        this.contestsData = data;
-        this.contestPlatforms = [...new Set(this.contestsData.map(contest => contest.platform))];
-        this.filterContestsByPlatform();
-        this._loaderService.isLoading.next(false);
-      }
-    )
+  async getUpcomingOngoingContest(): Promise<void> {
+    return new Promise((resolve) => {
+      this._contestService.getAllUpcomingOngoingContest().subscribe(
+        data => {
+          this.contestsData = data;
+          this.contestPlatforms = [...new Set(this.contestsData.map(contest => contest.platform))];
+          this.filterContestsByPlatform();
+          this._loaderService.isLoading.next(false);
+          resolve();
+        }
+      );
+    });
+  }
+
+  startCountDown() {
+    this.countDownInterval = interval(60000).subscribe(() => {
+      this.contests.forEach(contest => {
+        const startsIn = this._utilService.convertDateTimeToMilliseconds(new Date(contest.startTime));
+        contest.startsIn = startsIn === 'Started' ? 'Started' : startsIn;
+      });
+    });
+
+    this.contests.forEach(contest => {
+      const startsIn = this._utilService.convertDateTimeToMilliseconds(new Date(contest.startTime));
+      contest.startsIn = startsIn === 'Started' ? 'Started' : startsIn;
+    });
   }
 }

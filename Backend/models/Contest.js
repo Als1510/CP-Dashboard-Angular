@@ -3,7 +3,6 @@ const ContestSchema = new mongoose.Schema({
   name: String,
   startTime: String,
   startsOn: String,
-  startsIn: String,
   duration: String,
   url: String,
   platform: String,

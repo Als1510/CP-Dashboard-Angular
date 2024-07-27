@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { interval, Subscription } from 'rxjs';
 import { ContestService } from 'src/app/services/contest.service';
 import { LoaderService } from 'src/app/services/loader.service';
 import { ThemeService } from 'src/app/services/theme.service';
@@ -8,9 +9,12 @@ import { UtilService } from 'src/app/services/util.service';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss'],
 })
-export class HomePage implements OnInit {
+export class HomePage implements OnInit, OnDestroy {
 
   theme: string;
+  contests: any = [];
+  element
+  countDownInterval: Subscription;
 
   constructor(
     private _contestService: ContestService,
@@ -19,41 +23,61 @@ export class HomePage implements OnInit {
     private _themeService: ThemeService
   ) { }
 
-  contests: any = [];
-  element
-
   ngOnInit() {
     this._loaderService.isLoading.next(true);
     this._themeService.theme.subscribe((val) => {
       this.theme = val;
     })
-    this.getUpcomingContest()
-    this.element = document.querySelectorAll('.faq_icon')
-    this.element.forEach((event) => {
-      event.addEventListener('click', () => {
-        if (event.classList.contains('rotate')) {
-          event.classList.remove('rotate')
-          event.nextSibling.style.display = 'none';
-        } else {
-          event.nextSibling.style.display = 'block';
-          event.classList.add('rotate')
-        }
-      })
-    })
+    this.getUpcomingOngoingContest().then(() => {
+      this.startCountDown();
+    });
+    this.setupFaqIcons();
+  }
+
+  ngOnDestroy() {
+    this.countDownInterval?.unsubscribe();
+  }
+
+  setupFaqIcons() {
+    const elements = document.querySelectorAll('.faq_icon');
+    elements.forEach((element: HTMLElement) => {
+      element.addEventListener('click', () => {
+        const isRotated = element.classList.contains('rotate');
+        element.classList.toggle('rotate', !isRotated);
+        (element.nextElementSibling as HTMLElement).style.display = isRotated ? 'none' : 'block';
+      });
+    });
   }
 
   toggleBtn() {
-    let ul = document.querySelector('ul');
-    ul.classList.toggle('active')
+    document.querySelector('ul')?.classList.toggle('active');
   }
 
-  async getUpcomingContest() {
-    this._contestService.getUpcomingOngoingContest().subscribe(
-      (data: any) => {
-        this.contests = data;
-        this._loaderService.isLoading.next(false)
-      }
-    )
+  async getUpcomingOngoingContest(): Promise<void> {
+    return new Promise((resolve) => {
+      this._contestService.getUpcomingOngoingContest().subscribe(
+        (data: any) => {
+          this.contests = data;
+          this._loaderService.isLoading.next(false);
+          resolve();
+        }
+      );
+    });
+  }
+
+  startCountDown() {
+    this.countDownInterval = interval(60000).subscribe(() => {
+      this.contests.forEach(contest => {
+        const startsIn = this._utilService.convertDateTimeToMilliseconds(new Date(contest.startTime));
+        contest.startsIn = startsIn === 'Started' ? 'Started' : startsIn;
+      });
+    });
+
+    this.contests.forEach(contest => {
+      const startsIn = this._utilService.convertDateTimeToMilliseconds(new Date(contest.startTime));
+      contest.startsIn = startsIn === 'Started' ? 'Started' : startsIn;
+    });
+    console.log(this.contests)
   }
 
   getBackground() {
